@@ -82,54 +82,54 @@ export default function NFLPage() {
   const divisions = {
     afc: {
       east: [
-        { name: "Bills", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png", record: "13-3", teamUrl: "/team/nfl/buffalo-bills" },
-        { name: "Dolphins", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png", record: "8-8", teamUrl: "/team/nfl/miami-dolphins" },
-        { name: "Jets", logo: "/images/nfl-logos/jets_logo.png", record: "7-9", teamUrl: "/team/nfl/new-york-jets" },
-        { name: "Patriots", logo: "/images/nfl-logos/patriots_logo.png", record: "4-12", teamUrl: "/team/nfl/new-england-patriots" }
+        { name: "Bills", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png", teamUrl: "/team/nfl/buffalo-bills" },
+        { name: "Dolphins", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png", teamUrl: "/team/nfl/miami-dolphins" },
+        { name: "Jets", logo: "/images/nfl-logos/jets_logo.png", teamUrl: "/team/nfl/new-york-jets" },
+        { name: "Patriots", logo: "/images/nfl-logos/patriots_logo.png", teamUrl: "/team/nfl/new-england-patriots" }
       ],
       north: [
-        { name: "Ravens", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png", record: "12-4", teamUrl: "/team/nfl/baltimore-ravens" },
-        { name: "Steelers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png", record: "10-6", teamUrl: "/team/nfl/pittsburgh-steelers" },
-        { name: "Bengals", logo: "/images/nfl-logos/bengals1_logo.png", record: "9-7", teamUrl: "/team/nfl/cincinnati-bengals" },
-        { name: "Browns", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png", record: "3-13", teamUrl: "/team/nfl/cleveland-browns" }
+        { name: "Ravens", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png", teamUrl: "/team/nfl/baltimore-ravens" },
+        { name: "Steelers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png", teamUrl: "/team/nfl/pittsburgh-steelers" },
+        { name: "Bengals", logo: "/images/nfl-logos/bengals1_logo.png", teamUrl: "/team/nfl/cincinnati-bengals" },
+        { name: "Browns", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png", teamUrl: "/team/nfl/cleveland-browns" }
       ],
       south: [
-        { name: "Texans", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png", record: "10-6", teamUrl: "/team/nfl/houston-texans" },
-        { name: "Colts", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png", record: "8-8", teamUrl: "/team/nfl/indianapolis-colts" },
-        { name: "Jaguars", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png", record: "4-12", teamUrl: "/team/nfl/jacksonville-jaguars" },
-        { name: "Titans", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png", record: "3-13", teamUrl: "/team/nfl/tennessee-titans" }
+        { name: "Texans", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png", teamUrl: "/team/nfl/houston-texans" },
+        { name: "Colts", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png", teamUrl: "/team/nfl/indianapolis-colts" },
+        { name: "Jaguars", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png", teamUrl: "/team/nfl/jacksonville-jaguars" },
+        { name: "Titans", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png", teamUrl: "/team/nfl/tennessee-titans" }
       ],
       west: [
-        { name: "Chiefs", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png", record: "15-1", teamUrl: "/team/nfl/kansas-city-chiefs" },
-        { name: "Chargers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png", record: "11-5", teamUrl: "/team/nfl/los-angeles-chargers" },
-        { name: "Broncos", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png", record: "9-7", teamUrl: "/team/nfl/denver-broncos" },
-        { name: "Raiders", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png", record: "4-12", teamUrl: "/team/nfl/las-vegas-raiders" }
+        { name: "Chiefs", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png", teamUrl: "/team/nfl/kansas-city-chiefs" },
+        { name: "Chargers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png", teamUrl: "/team/nfl/los-angeles-chargers" },
+        { name: "Broncos", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png", teamUrl: "/team/nfl/denver-broncos" },
+        { name: "Raiders", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png", teamUrl: "/team/nfl/las-vegas-raiders" }
       ]
     },
     nfc: {
       east: [
-        { name: "Eagles", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png", record: "13-3", teamUrl: "/team/nfl/philadelphia-eagles" },
-        { name: "Commanders", logo: "/images/nfl-logos/commanders_logo.png", record: "11-5", teamUrl: "/team/nfl/washington-commanders" },
-        { name: "Cowboys", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png", record: "7-9", teamUrl: "/team/nfl/dallas-cowboys" },
-        { name: "Giants", logo: "/images/nfl-logos/giants_logo.png", record: "3-13", teamUrl: "/team/nfl/new-york-giants" }
+        { name: "Eagles", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png", teamUrl: "/team/nfl/philadelphia-eagles" },
+        { name: "Commanders", logo: "/images/nfl-logos/commanders_logo.png", teamUrl: "/team/nfl/washington-commanders" },
+        { name: "Cowboys", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png", teamUrl: "/team/nfl/dallas-cowboys" },
+        { name: "Giants", logo: "/images/nfl-logos/giants_logo.png", teamUrl: "/team/nfl/new-york-giants" }
       ],
       north: [
-        { name: "Lions", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png", record: "14-2", teamUrl: "/team/nfl/detroit-lions" },
-        { name: "Vikings", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/min.png", record: "13-3", teamUrl: "/team/nfl/minnesota-vikings" },
-        { name: "Packers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png", record: "11-5", teamUrl: "/team/nfl/green-bay-packers" },
-        { name: "Bears", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png", record: "4-12", teamUrl: "/team/nfl/chicago-bears" }
+        { name: "Lions", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png", teamUrl: "/team/nfl/detroit-lions" },
+        { name: "Vikings", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/min.png", teamUrl: "/team/nfl/minnesota-vikings" },
+        { name: "Packers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png", teamUrl: "/team/nfl/green-bay-packers" },
+        { name: "Bears", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png", teamUrl: "/team/nfl/chicago-bears" }
       ],
       south: [
-        { name: "Buccaneers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png", record: "9-7", teamUrl: "/team/nfl/tampa-bay-buccaneers" },
-        { name: "Falcons", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png", record: "8-8", teamUrl: "/team/nfl/atlanta-falcons" },
-        { name: "Saints", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/no.png", record: "5-11", teamUrl: "/team/nfl/new-orleans-saints" },
-        { name: "Panthers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/car.png", record: "4-12", teamUrl: "/team/nfl/carolina-panthers" }
+        { name: "Buccaneers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png", teamUrl: "/team/nfl/tampa-bay-buccaneers" },
+        { name: "Falcons", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png", teamUrl: "/team/nfl/atlanta-falcons" },
+        { name: "Saints", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/no.png", teamUrl: "/team/nfl/new-orleans-saints" },
+        { name: "Panthers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/car.png", teamUrl: "/team/nfl/carolina-panthers" }
       ],
       west: [
-        { name: "Rams", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png", record: "10-6", teamUrl: "/team/nfl/los-angeles-rams" },
-        { name: "Seahawks", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png", record: "9-7", teamUrl: "/team/nfl/seattle-seahawks" },
-        { name: "Cardinals", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png", record: "8-8", teamUrl: "/team/nfl/arizona-cardinals" },
-        { name: "49ers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png", record: "6-10", teamUrl: "/team/nfl/san-francisco-49ers" }
+        { name: "Rams", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png", teamUrl: "/team/nfl/los-angeles-rams" },
+        { name: "Seahawks", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png", teamUrl: "/team/nfl/seattle-seahawks" },
+        { name: "Cardinals", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png", teamUrl: "/team/nfl/arizona-cardinals" },
+        { name: "49ers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png", teamUrl: "/team/nfl/san-francisco-49ers" }
       ]
     }
   }
@@ -218,85 +218,6 @@ export default function NFLPage() {
               </div>
             </section>
 
-            {/* NFL Teams by Division */}
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">🏈 All 32 NFL Teams</h2>
-              
-              {/* AFC */}
-              <div className="mb-8">
-                <h3 className="text-xl font-semibold mb-4 text-red-600 text-center">AFC</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {Object.entries(divisions.afc).map(([divisionName, teams]) => (
-                    <div key={divisionName} className="bg-white rounded-lg shadow-md p-4">
-                      <h4 className="text-lg font-semibold mb-3 text-center capitalize text-red-600">
-                        AFC {divisionName}
-                      </h4>
-                      <div className="space-y-2">
-                        {teams.map((team, index) => (
-                          <Link 
-                            key={index} 
-                            href={team.teamUrl}
-                            className="flex items-center justify-between p-3 hover:bg-gray-50 rounded transition-colors group"
-                          >
-                            <div className="flex items-center">
-                              <img 
-                                src={team.logo} 
-                                alt={team.name} 
-                                className="w-8 h-8 object-contain mr-3"
-                                onError={(e) => {
-                                  const target = e.target as HTMLImageElement
-                                  target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
-                                }}
-                              />
-                              <span className="font-medium group-hover:text-blue-600">{team.name}</span>
-                            </div>
-                            <span className="text-sm font-semibold text-gray-600">{team.record}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* NFC */}
-              <div>
-                <h3 className="text-xl font-semibold mb-4 text-blue-600 text-center">NFC</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {Object.entries(divisions.nfc).map(([divisionName, teams]) => (
-                    <div key={divisionName} className="bg-white rounded-lg shadow-md p-4">
-                      <h4 className="text-lg font-semibold mb-3 text-center capitalize text-blue-600">
-                        NFC {divisionName}
-                      </h4>
-                      <div className="space-y-2">
-                        {teams.map((team, index) => (
-                          <Link 
-                            key={index} 
-                            href={team.teamUrl}
-                            className="flex items-center justify-between p-3 hover:bg-gray-50 rounded transition-colors group"
-                          >
-                            <div className="flex items-center">
-                              <img 
-                                src={team.logo} 
-                                alt={team.name} 
-                                className="w-8 h-8 object-contain mr-3"
-                                onError={(e) => {
-                                  const target = e.target as HTMLImageElement
-                                  target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
-                                }}
-                              />
-                              <span className="font-medium group-hover:text-blue-600">{team.name}</span>
-                            </div>
-                            <span className="text-sm font-semibold text-gray-600">{team.record}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
             {/* Latest News */}
             <section>
               <h2 className="text-2xl font-bold mb-6 text-gray-900">📰 Latest NFL News</h2>
@@ -324,67 +245,143 @@ export default function NFLPage() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
-              <h3 className="text-xl font-semibold mb-6 text-center text-gray-900">📈 Player Trends</h3>
-              
-              {/* Trending Up */}
-              <div className="mb-6">
-                <h4 className="text-green-600 font-semibold mb-3 flex items-center">
-                  <i className="fas fa-arrow-up mr-2"></i>
-                  Trending Up
-                </h4>
-                {trendingPlayers.up.map((player, index) => (
-                  <div key={index} className="flex items-center p-3 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 rounded">
-                    <img 
-                      src={player.photo} 
-                      alt={player.name} 
-                      className="w-12 h-12 rounded-full object-cover mr-3"
-                    />
-                    <div className="flex-1">
-                      <div className="font-medium text-sm">{player.name}</div>
-                      <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
-                    </div>
-                    <img 
-                      src={player.logo} 
-                      alt={player.team} 
-                      className="w-6 h-6 object-contain"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
-                      }}
-                    />
+            <div className="sticky top-4 space-y-6">
+              {/* NFL Teams */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-xl font-semibold mb-6 text-center text-gray-900">🏈 All 32 NFL Teams</h3>
+                
+                {/* AFC */}
+                <div className="mb-6">
+                  <h4 className="text-lg font-semibold mb-4 text-red-600 text-center">AFC</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    {Object.entries(divisions.afc).map(([divisionName, teams]) => (
+                      <div key={divisionName} className="space-y-2">
+                        <h5 className="text-sm font-semibold text-center capitalize text-red-600">
+                          {divisionName}
+                        </h5>
+                        <div className="space-y-1">
+                          {teams.map((team, index) => (
+                            <Link 
+                              key={index} 
+                              href={team.teamUrl}
+                              className="flex items-center p-2 hover:bg-gray-50 rounded transition-colors group"
+                            >
+                              <img 
+                                src={team.logo} 
+                                alt={team.name} 
+                                className="w-6 h-6 object-contain mr-2"
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement
+                                  target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
+                                }}
+                              />
+                              <span className="text-xs font-medium group-hover:text-blue-600">{team.name}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+
+                {/* NFC */}
+                <div>
+                  <h4 className="text-lg font-semibold mb-4 text-blue-600 text-center">NFC</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    {Object.entries(divisions.nfc).map(([divisionName, teams]) => (
+                      <div key={divisionName} className="space-y-2">
+                        <h5 className="text-sm font-semibold text-center capitalize text-blue-600">
+                          {divisionName}
+                        </h5>
+                        <div className="space-y-1">
+                          {teams.map((team, index) => (
+                            <Link 
+                              key={index} 
+                              href={team.teamUrl}
+                              className="flex items-center p-2 hover:bg-gray-50 rounded transition-colors group"
+                            >
+                              <img 
+                                src={team.logo} 
+                                alt={team.name} 
+                                className="w-6 h-6 object-contain mr-2"
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement
+                                  target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
+                                }}
+                              />
+                              <span className="text-xs font-medium group-hover:text-blue-600">{team.name}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              {/* Trending Down */}
-              <div>
-                <h4 className="text-red-600 font-semibold mb-3 flex items-center">
-                  <i className="fas fa-arrow-down mr-2"></i>
-                  Trending Down
-                </h4>
-                {trendingPlayers.down.map((player, index) => (
-                  <div key={index} className="flex items-center p-3 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 rounded">
-                    <img 
-                      src={player.photo} 
-                      alt={player.name} 
-                      className="w-12 h-12 rounded-full object-cover mr-3"
-                    />
-                    <div className="flex-1">
-                      <div className="font-medium text-sm">{player.name}</div>
-                      <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
+              {/* Player Trends */}
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <h3 className="text-xl font-semibold mb-6 text-center text-gray-900">📈 Player Trends</h3>
+                
+                {/* Trending Up */}
+                <div className="mb-6">
+                  <h4 className="text-green-600 font-semibold mb-3 flex items-center">
+                    <i className="fas fa-arrow-up mr-2"></i>
+                    Trending Up
+                  </h4>
+                  {trendingPlayers.up.map((player, index) => (
+                    <div key={index} className="flex items-center p-3 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 rounded">
+                      <img 
+                        src={player.photo} 
+                        alt={player.name} 
+                        className="w-12 h-12 rounded-full object-cover mr-3"
+                      />
+                      <div className="flex-1">
+                        <div className="font-medium text-sm">{player.name}</div>
+                        <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
+                      </div>
+                      <img 
+                        src={player.logo} 
+                        alt={player.team} 
+                        className="w-6 h-6 object-contain"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement
+                          target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
+                        }}
+                      />
                     </div>
-                    <img 
-                      src={player.logo} 
-                      alt={player.team} 
-                      className="w-6 h-6 object-contain"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
-                      }}
-                    />
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                {/* Trending Down */}
+                <div>
+                  <h4 className="text-red-600 font-semibold mb-3 flex items-center">
+                    <i className="fas fa-arrow-down mr-2"></i>
+                    Trending Down
+                  </h4>
+                  {trendingPlayers.down.map((player, index) => (
+                    <div key={index} className="flex items-center p-3 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 rounded">
+                      <img 
+                        src={player.photo} 
+                        alt={player.name} 
+                        className="w-12 h-12 rounded-full object-cover mr-3"
+                      />
+                      <div className="flex-1">
+                        <div className="font-medium text-sm">{player.name}</div>
+                        <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
+                      </div>
+                      <img 
+                        src={player.logo} 
+                        alt={player.team} 
+                        className="w-6 h-6 object-contain"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement
+                          target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
