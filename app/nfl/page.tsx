@@ -180,11 +180,6 @@ export default function NFLPage() {
       <div className="bg-white py-6 shadow-sm">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-center mb-4">
-            <img
-              src="https://logos-world.net/wp-content/uploads/2020/06/NFL-Logo.png"
-              alt="NFL Logo"
-              className="w-16 h-16 mr-4"
-            />
             <div className="text-center">
               <h1 className="text-3xl font-bold text-gray-900">NFL Hub</h1>
               <p className="text-gray-600 mt-2">Latest news, standings, and analysis - June 15, 2025</p>
