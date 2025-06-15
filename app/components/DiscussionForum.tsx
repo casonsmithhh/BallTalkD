@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 
 interface Post {
   id: string
@@ -24,6 +25,7 @@ interface Post {
   createdAt: Date
   tags: string[]
   isHot: boolean
+  discussionUrl: string
 }
 
 interface Reply {
@@ -56,75 +58,121 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
   const [showNewPostForm, setShowNewPostForm] = useState(false)
   const [sortBy, setSortBy] = useState<'hot' | 'new' | 'top'>('hot')
   const [filterCategory, setFilterCategory] = useState<string>('all')
-
-  // Sample data - replace with API calls
-  const samplePosts: Post[] = [
-    {
-      id: '1',
-      title: `${team || sport} Trade Deadline Predictions`,
-      content: 'What moves do you think the team will make before the deadline? I think we need to strengthen our defense...',
-      author: {
-        id: '1',
-        username: 'SportsFan2024',
-        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SportsFan2024',
-        reputation: 1250,
-        verified: true,
-        favoriteTeam: team
-      },
-      sport,
-      team,
-      category: 'trade-rumors',
-      upvotes: 45,
-      downvotes: 3,
-      replies: [
-        {
-          id: '1',
-          content: 'I agree! We definitely need more depth in the secondary.',
-          author: {
-            id: '2',
-            username: 'DefenseFirst',
-            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=DefenseFirst',
-            reputation: 890,
-            verified: false
-          },
-          upvotes: 12,
-          downvotes: 1,
-          createdAt: new Date('2025-01-15T10:30:00')
-        }
-      ],
-      createdAt: new Date('2025-01-15T09:00:00'),
-      tags: ['trade-deadline', 'predictions', 'defense'],
-      isHot: true
-    },
-    {
-      id: '2',
-      title: `Game Analysis: Last Night's Performance`,
-      content: 'Breaking down the key plays and strategies from last night\'s game. The offensive line really stepped up...',
-      author: {
-        id: '3',
-        username: 'GameAnalyst',
-        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=GameAnalyst',
-        reputation: 2100,
-        verified: true,
-        favoriteTeam: team
-      },
-      sport,
-      team,
-      category: 'game-analysis',
-      upvotes: 78,
-      downvotes: 5,
-      replies: [],
-      createdAt: new Date('2025-01-15T08:00:00'),
-      tags: ['game-analysis', 'offense', 'strategy'],
-      isHot: true
-    }
-  ]
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    setPosts(samplePosts)
+    loadDiscussions()
   }, [sport, team])
 
-  const handleCreatePost = () => {
+  const loadDiscussions = async () => {
+    setIsLoading(true)
+    try {
+      // Simulate API call to load real discussions
+      const response = await fetch(`/api/discussions?sport=${sport}&team=${team || ''}`)
+      if (response.ok) {
+        const data = await response.json()
+        setPosts(data.discussions || generateSamplePosts())
+      } else {
+        setPosts(generateSamplePosts())
+      }
+    } catch (error) {
+      console.error('Failed to load discussions:', error)
+      setPosts(generateSamplePosts())
+    }
+    setIsLoading(false)
+  }
+
+  const generateSamplePosts = (): Post[] => {
+    const currentDate = new Date()
+    return [
+      {
+        id: '1',
+        title: `${team || sport.toUpperCase()} Trade Deadline Analysis: Who Should We Target?`,
+        content: `With the trade deadline approaching, what moves do you think ${team || 'our team'} should make? I've been analyzing our roster needs and think we could use more depth at...`,
+        author: {
+          id: '1',
+          username: 'TradeMaster2025',
+          avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+          reputation: 1250,
+          verified: true,
+          favoriteTeam: team
+        },
+        sport,
+        team,
+        category: 'trade-rumors',
+        upvotes: 45,
+        downvotes: 3,
+        replies: [
+          {
+            id: '1',
+            content: 'Great analysis! I think we definitely need to address our defensive issues before making any offensive moves.',
+            author: {
+              id: '2',
+              username: 'DefenseFirst',
+              avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+              reputation: 890,
+              verified: false
+            },
+            upvotes: 12,
+            downvotes: 1,
+            createdAt: new Date(currentDate.getTime() - 30 * 60 * 1000)
+          }
+        ],
+        createdAt: new Date(currentDate.getTime() - 2 * 60 * 60 * 1000),
+        tags: ['trade-deadline', 'analysis', 'roster-moves'],
+        isHot: true,
+        discussionUrl: `/discussions/${sport}/${team || 'general'}/trade-deadline-analysis`
+      },
+      {
+        id: '2',
+        title: `Game Recap: Last Night's Performance Was Incredible!`,
+        content: `What a game! The way ${team || 'the team'} executed in the final quarter was masterful. Let's break down the key plays that led to victory...`,
+        author: {
+          id: '3',
+          username: 'GameAnalyst',
+          avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+          reputation: 2100,
+          verified: true,
+          favoriteTeam: team
+        },
+        sport,
+        team,
+        category: 'game-analysis',
+        upvotes: 78,
+        downvotes: 5,
+        replies: [],
+        createdAt: new Date(currentDate.getTime() - 4 * 60 * 60 * 1000),
+        tags: ['game-recap', 'analysis', 'victory'],
+        isHot: true,
+        discussionUrl: `/discussions/${sport}/${team || 'general'}/game-recap-incredible-performance`
+      },
+      {
+        id: '3',
+        title: `Rookie Watch: Our Young Talent is Showing Real Promise`,
+        content: `The development of our rookie class has been impressive this season. Particularly excited about how they're adapting to the professional level...`,
+        author: {
+          id: '4',
+          username: 'FutureStars',
+          avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+          reputation: 650,
+          verified: false,
+          favoriteTeam: team
+        },
+        sport,
+        team,
+        category: 'general',
+        upvotes: 34,
+        downvotes: 2,
+        replies: [],
+        createdAt: new Date(currentDate.getTime() - 6 * 60 * 60 * 1000),
+        tags: ['rookies', 'development', 'future'],
+        isHot: false,
+        discussionUrl: `/discussions/${sport}/${team || 'general'}/rookie-watch-young-talent`
+      }
+    ]
+  }
+
+  const handleCreatePost = async () => {
     if (!newPostTitle.trim() || !newPostContent.trim()) return
 
     const newPost: Post = {
@@ -134,7 +182,7 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
       author: {
         id: 'current-user',
         username: 'CurrentUser',
-        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CurrentUser',
+        avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face',
         reputation: 100,
         verified: false,
         favoriteTeam: team
@@ -147,7 +195,8 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
       replies: [],
       createdAt: new Date(),
       tags: [],
-      isHot: false
+      isHot: false,
+      discussionUrl: `/discussions/${sport}/${team || 'general'}/${newPostTitle.toLowerCase().replace(/\s+/g, '-')}`
     }
 
     setPosts([newPost, ...posts])
@@ -301,7 +350,7 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
           </h2>
           <button
             onClick={() => setShowNewPostForm(true)}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
           >
             + New Post
           </button>
@@ -378,50 +427,80 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
       </AnimatePresence>
 
       {/* Posts List */}
-      <div className="space-y-4">
-        {sortedPosts.map(post => (
-          <motion.div
-            key={post.id}
-            className="bg-white rounded-lg shadow-md p-6 cursor-pointer hover:shadow-lg transition-shadow"
-            onClick={() => setSelectedPost(post)}
-            whileHover={{ scale: 1.01 }}
-          >
-            <div className="flex justify-between items-start">
-              <div className="flex-1">
-                <div className="flex items-center space-x-2 mb-2">
-                  {post.isHot && <span className="text-red-500">🔥</span>}
-                  <h3 className="text-lg font-semibold">{post.title}</h3>
-                  <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-                    {post.category}
-                  </span>
-                </div>
-                <p className="text-gray-600 mb-3 line-clamp-2">{post.content}</p>
-                <div className="flex items-center space-x-4 text-sm text-gray-500">
-                  <div className="flex items-center space-x-1">
-                    <img
-                      src={post.author.avatar}
-                      alt={post.author.username}
-                      className="w-5 h-5 rounded-full"
-                    />
-                    <span>{post.author.username}</span>
-                    {post.author.verified && <span className="text-blue-600">✓</span>}
+      {isLoading ? (
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading discussions...</p>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {sortedPosts.map(post => (
+            <motion.div
+              key={post.id}
+              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+              whileHover={{ scale: 1.01 }}
+            >
+              <div className="flex justify-between items-start">
+                <div className="flex-1">
+                  <div className="flex items-center space-x-2 mb-2">
+                    {post.isHot && <span className="text-red-500">🔥</span>}
+                    <h3 className="text-lg font-semibold">{post.title}</h3>
+                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                      {post.category}
+                    </span>
                   </div>
-                  <span>•</span>
-                  <span>{post.replies.length} replies</span>
-                  <span>•</span>
-                  <span>{post.createdAt.toLocaleDateString()}</span>
+                  <p className="text-gray-600 mb-3 line-clamp-2">{post.content}</p>
+                  <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    <div className="flex items-center space-x-1">
+                      <img
+                        src={post.author.avatar}
+                        alt={post.author.username}
+                        className="w-5 h-5 rounded-full"
+                      />
+                      <span>{post.author.username}</span>
+                      {post.author.verified && <span className="text-blue-600">✓</span>}
+                    </div>
+                    <span>•</span>
+                    <span>{post.replies.length} replies</span>
+                    <span>•</span>
+                    <span>{post.createdAt.toLocaleDateString()}</span>
+                  </div>
+                  <div className="mt-3 flex space-x-2">
+                    <Link
+                      href={post.discussionUrl}
+                      className="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition-colors"
+                    >
+                      Join Discussion
+                    </Link>
+                    <button
+                      onClick={() => setSelectedPost(post)}
+                      className="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700 transition-colors"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2 ml-4">
+                  <div className="text-center">
+                    <button
+                      onClick={() => handleVote(post.id, 'up')}
+                      className="block text-green-600 hover:text-green-800 font-semibold"
+                    >
+                      ↑ {post.upvotes}
+                    </button>
+                    <button
+                      onClick={() => handleVote(post.id, 'down')}
+                      className="block text-red-600 hover:text-red-800 font-semibold"
+                    >
+                      ↓ {post.downvotes}
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center space-x-2 ml-4">
-                <div className="text-center">
-                  <div className="text-green-600 font-semibold">↑ {post.upvotes}</div>
-                  <div className="text-red-600 font-semibold">↓ {post.downvotes}</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+            </motion.div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

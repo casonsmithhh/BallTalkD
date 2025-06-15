@@ -6,71 +6,81 @@ export default function SportsGrid() {
       name: 'NBA',
       description: 'Trade talk, MVP debates, young stars and legendary moments.',
       href: '/nba',
-      logo: 'https://cdn.nba.com/logos/nba/1610612737/global/L/logo.svg',
-      teams: ['Lakers', 'Warriors', 'Celtics', 'Heat']
+      logo: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=64&h=64&fit=crop',
+      teams: ['Lakers', 'Warriors', 'Celtics', 'Heat'],
+      image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop'
     },
     {
       name: 'NFL',
       description: 'Break down the draft, breakout rookies, and playoff races.',
       href: '/nfl',
-      logo: 'https://static.www.nfl.com/image/private/t_new_photo_album/league/nfl-logo-shield',
-      teams: ['Chiefs', 'Bills', 'Cowboys', 'Patriots']
+      logo: 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=64&h=64&fit=crop',
+      teams: ['Chiefs', 'Bills', 'Cowboys', 'Patriots'],
+      image: 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop'
     },
     {
       name: 'NHL',
       description: 'Stanley Cup matchups, trade rumors, and power rankings.',
       href: '/nhl',
-      logo: 'https://assets.nhle.com/logos/nhl/svg/nhl_logo.svg',
-      teams: ['Rangers', 'Bruins', 'Penguins', 'Blackhawks']
+      logo: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=64&h=64&fit=crop',
+      teams: ['Rangers', 'Bruins', 'Penguins', 'Blackhawks'],
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop'
     },
     {
       name: 'MLB',
       description: 'Pitching duels, power hitters, and divisional drama.',
       href: '/mlb',
-      logo: 'https://www.mlbstatic.com/team-logos/league-on-dark/1.svg',
-      teams: ['Yankees', 'Dodgers', 'Red Sox', 'Giants']
+      logo: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=64&h=64&fit=crop',
+      teams: ['Yankees', 'Dodgers', 'Red Sox', 'Giants'],
+      image: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=200&fit=crop'
     },
     {
       name: 'MLS',
       description: 'Postseason hopes, Messi-mania, and rising U.S. stars.',
       href: '/mls',
-      logo: 'https://images.mlssoccer.com/image/private/t_keep-aspect-ratio-e-mobile_3x/mls-logo-white.png',
-      teams: ['LAFC', 'Inter Miami', 'Seattle', 'Atlanta']
+      logo: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=64&h=64&fit=crop',
+      teams: ['LAFC', 'Inter Miami', 'Seattle', 'Atlanta'],
+      image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop'
     },
     {
       name: 'Soccer',
       description: 'Global transfers, Champions League, World Cup debates.',
       href: '/soccer',
-      logo: 'https://cdn-icons-png.flaticon.com/512/53/53283.png',
-      teams: ['Real Madrid', 'Barcelona', 'Man City', 'Liverpool']
+      logo: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=64&h=64&fit=crop',
+      teams: ['Real Madrid', 'Barcelona', 'Man City', 'Liverpool'],
+      image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop'
     },
     {
       name: 'Tennis',
       description: 'Grand Slams, GOAT debates, and rising stars.',
       href: '/tennis',
-      logo: 'https://cdn-icons-png.flaticon.com/512/53/53283.png',
-      teams: ['ATP', 'WTA', 'Grand Slams', 'Rankings']
+      logo: 'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=64&h=64&fit=crop',
+      teams: ['ATP', 'WTA', 'Grand Slams', 'Rankings'],
+      image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=400&h=200&fit=crop'
     },
     {
       name: 'Formula 1',
       description: 'Team dynamics, qualifying drama, and global circuits.',
       href: '/f1',
-      logo: 'https://www.formula1.com/etc/designs/fom-website/images/f1_logo.svg',
-      teams: ['Red Bull', 'Mercedes', 'Ferrari', 'McLaren']
+      logo: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=64&h=64&fit=crop',
+      teams: ['Red Bull', 'Mercedes', 'Ferrari', 'McLaren'],
+      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop'
     },
     {
       name: 'NCAA Football',
       description: 'Heisman hopefuls, rivalries, and bowl projections.',
       href: '/ncaa-fb',
-      logo: 'https://cdn-icons-png.flaticon.com/512/53/53283.png',
-      teams: ['Alabama', 'Georgia', 'Ohio State', 'Michigan']
+      logo: 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=64&h=64&fit=crop',
+      teams: ['Alabama', 'Georgia', 'Ohio State', 'Michigan'],
+      image: 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop'
     },
     {
       name: 'NCAA Basketball',
       description: 'March Madness, blue bloods, and one-and-dones.',
       href: '/ncaa-bb',
-      logo: 'https://cdn-icons-png.flaticon.com/512/53/53283.png',
-      teams: ['Duke', 'UNC', 'Kentucky', 'Kansas']
+      logo: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=64&h=64&fit=crop',
+      teams: ['Duke', 'UNC', 'Kentucky', 'Kansas'],
+      image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop'
     }
   ]
 
@@ -92,27 +102,26 @@ export default function SportsGrid() {
               key={sport.name}
               className="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg group"
             >
-              <div className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center mr-4">
-                    <img
-                      src={sport.logo}
-                      alt={`${sport.name} Logo`}
-                      className="w-12 h-12 object-contain"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        target.src = 'https://cdn-icons-png.flaticon.com/512/53/53283.png'
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{sport.name}</h3>
-                    <div className="text-sm text-gray-500">
-                      {sport.teams.slice(0, 2).join(', ')}...
-                    </div>
-                  </div>
+              <div className="relative h-32 overflow-hidden">
+                <img
+                  src={sport.image}
+                  alt={`${sport.name} Background`}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div className="absolute top-4 left-4">
+                  <img
+                    src={sport.logo}
+                    alt={`${sport.name} Logo`}
+                    className="w-12 h-12 rounded-lg bg-white p-2"
+                  />
                 </div>
-                
+                <div className="absolute bottom-4 left-4">
+                  <h3 className="text-xl font-bold text-white">{sport.name}</h3>
+                </div>
+              </div>
+              
+              <div className="p-6">
                 <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                   {sport.description}
                 </p>
