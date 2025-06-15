@@ -13,24 +13,31 @@ export default function AuthPage() {
     password: ''
   })
   const [currentUser, setCurrentUser] = useState<any>(null)
+  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsLoading(true)
     
-    // Mock authentication - in a real app, this would connect to Supabase
-    const mockUser = {
-      id: Date.now(),
-      username: formData.username || formData.email.split('@')[0],
-      email: formData.email,
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${formData.username || formData.email}`,
-      reputation: 100,
-      verified: false,
-      joinedAt: new Date()
-    }
+    // Simulate authentication delay
+    setTimeout(() => {
+      // Mock authentication - in a real app, this would connect to your auth system
+      const mockUser = {
+        id: Date.now(),
+        username: formData.username || formData.email.split('@')[0],
+        email: formData.email,
+        avatar: `https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face`,
+        reputation: 100,
+        verified: false,
+        joinedAt: new Date()
+      }
 
-    localStorage.setItem('ballTalkUser', JSON.stringify(mockUser))
-    router.push('/')
+      localStorage.setItem('ballTalkUser', JSON.stringify(mockUser))
+      setCurrentUser(mockUser)
+      setIsLoading(false)
+      router.push('/')
+    }, 1500)
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +87,7 @@ export default function AuthPage() {
                   onChange={handleInputChange}
                   required={!isLogin}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                  placeholder="Choose a username"
                 />
               </div>
             )}
@@ -96,6 +104,7 @@ export default function AuthPage() {
                 onChange={handleInputChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                placeholder="Enter your email"
               />
             </div>
 
@@ -111,14 +120,23 @@ export default function AuthPage() {
                 onChange={handleInputChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                placeholder="Enter your password"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors"
+              disabled={isLoading}
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLogin ? 'Sign In' : 'Sign Up'}
+              {isLoading ? (
+                <div className="flex items-center">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  {isLogin ? 'Signing In...' : 'Creating Account...'}
+                </div>
+              ) : (
+                isLogin ? 'Sign In' : 'Sign Up'
+              )}
             </button>
           </form>
 
@@ -129,6 +147,14 @@ export default function AuthPage() {
             >
               {isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
             </button>
+          </div>
+
+          {/* Demo Account Info */}
+          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+            <h3 className="text-sm font-medium text-blue-900 mb-2">Demo Account</h3>
+            <p className="text-xs text-blue-700">
+              Use any email and password to create a demo account and explore BallTalk's features.
+            </p>
           </div>
         </div>
       </div>

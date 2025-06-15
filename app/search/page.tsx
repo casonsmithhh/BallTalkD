@@ -14,6 +14,7 @@ interface SearchResult {
   sport: string
   url: string
   relevance: number
+  imageUrl?: string
 }
 
 export default function SearchPage() {
@@ -40,53 +41,130 @@ export default function SearchPage() {
   const performSearch = async (searchQuery: string) => {
     setIsLoading(true)
     
-    // Simulate API call - replace with real search implementation
-    setTimeout(() => {
-      const mockResults: SearchResult[] = [
-        {
-          id: '1',
-          type: 'team',
-          title: 'Los Angeles Lakers',
-          description: 'NBA team based in Los Angeles, California',
-          sport: 'NBA',
-          url: '/team/nba/los-angeles-lakers',
-          relevance: 95
-        },
-        {
-          id: '2',
-          type: 'player',
-          title: 'LeBron James',
-          description: 'NBA superstar, 4-time champion, Lakers forward',
-          sport: 'NBA',
-          url: '/player/lebron-james',
-          relevance: 90
-        },
-        {
-          id: '3',
-          type: 'discussion',
-          title: 'Lakers Trade Rumors Discussion',
-          description: 'Community discussion about potential Lakers trades',
-          sport: 'NBA',
-          url: '/discussions/lakers-trade-rumors',
-          relevance: 85
-        },
-        {
-          id: '4',
-          type: 'topic',
-          title: 'NBA MVP Race 2025',
-          description: 'Analysis and discussion of MVP candidates',
-          sport: 'NBA',
-          url: '/topics/nba-mvp-race-2025',
-          relevance: 80
-        }
-      ].filter(result => 
-        result.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        result.description.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-      
-      setResults(mockResults)
+    try {
+      // Simulate API call with realistic sports data
+      setTimeout(() => {
+        const mockResults: SearchResult[] = generateSearchResults(searchQuery)
+        setResults(mockResults)
+        setIsLoading(false)
+      }, 800)
+    } catch (error) {
+      console.error('Search error:', error)
       setIsLoading(false)
-    }, 1000)
+    }
+  }
+
+  const generateSearchResults = (searchQuery: string): SearchResult[] => {
+    const query = searchQuery.toLowerCase()
+    const allResults: SearchResult[] = []
+
+    // NBA Teams and Players
+    const nbaData = [
+      { name: 'Los Angeles Lakers', type: 'team', sport: 'NBA', url: '/team/nba/los-angeles-lakers' },
+      { name: 'Boston Celtics', type: 'team', sport: 'NBA', url: '/team/nba/boston-celtics' },
+      { name: 'Golden State Warriors', type: 'team', sport: 'NBA', url: '/team/nba/golden-state-warriors' },
+      { name: 'LeBron James', type: 'player', sport: 'NBA', url: '/player/lebron-james' },
+      { name: 'Stephen Curry', type: 'player', sport: 'NBA', url: '/player/stephen-curry' },
+      { name: 'Jayson Tatum', type: 'player', sport: 'NBA', url: '/player/jayson-tatum' },
+      { name: 'Nikola Jokic', type: 'player', sport: 'NBA', url: '/player/nikola-jokic' }
+    ]
+
+    // NFL Teams and Players
+    const nflData = [
+      { name: 'Kansas City Chiefs', type: 'team', sport: 'NFL', url: '/team/nfl/kansas-city-chiefs' },
+      { name: 'Buffalo Bills', type: 'team', sport: 'NFL', url: '/team/nfl/buffalo-bills' },
+      { name: 'Dallas Cowboys', type: 'team', sport: 'NFL', url: '/team/nfl/dallas-cowboys' },
+      { name: 'Patrick Mahomes', type: 'player', sport: 'NFL', url: '/player/patrick-mahomes' },
+      { name: 'Josh Allen', type: 'player', sport: 'NFL', url: '/player/josh-allen' },
+      { name: 'Caleb Williams', type: 'player', sport: 'NFL', url: '/player/caleb-williams' }
+    ]
+
+    // MLB Teams and Players
+    const mlbData = [
+      { name: 'New York Yankees', type: 'team', sport: 'MLB', url: '/team/mlb/new-york-yankees' },
+      { name: 'Los Angeles Dodgers', type: 'team', sport: 'MLB', url: '/team/mlb/los-angeles-dodgers' },
+      { name: 'Aaron Judge', type: 'player', sport: 'MLB', url: '/player/aaron-judge' },
+      { name: 'Shohei Ohtani', type: 'player', sport: 'MLB', url: '/player/shohei-ohtani' }
+    ]
+
+    // Combine all data
+    const allData = [...nbaData, ...nflData, ...mlbData]
+
+    // Filter based on search query
+    allData.forEach(item => {
+      if (item.name.toLowerCase().includes(query)) {
+        const relevance = calculateRelevance(item.name, query)
+        allResults.push({
+          id: `${item.sport}-${item.name.replace(/\s+/g, '-').toLowerCase()}`,
+          type: item.type as 'team' | 'player',
+          title: item.name,
+          description: `${item.sport} ${item.type} - Join discussions and get latest updates`,
+          sport: item.sport,
+          url: item.url,
+          relevance,
+          imageUrl: getImageForSport(item.sport)
+        })
+      }
+    })
+
+    // Add discussion results
+    if (query.includes('trade') || query.includes('mvp') || query.includes('finals')) {
+      allResults.push({
+        id: 'discussion-1',
+        type: 'discussion',
+        title: `${query.charAt(0).toUpperCase() + query.slice(1)} Discussion`,
+        description: 'Join the community discussion about this hot topic',
+        sport: 'General',
+        url: `/discussions/general/all/${query.replace(/\s+/g, '-')}`,
+        relevance: 85,
+        imageUrl: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=200&fit=crop'
+      })
+    }
+
+    // Add topic results
+    if (query.includes('nba') || query.includes('nfl') || query.includes('mlb')) {
+      allResults.push({
+        id: 'topic-1',
+        type: 'topic',
+        title: `${query.toUpperCase()} Latest News & Analysis`,
+        description: 'Get the latest news, analysis, and discussions',
+        sport: query.toUpperCase(),
+        url: `/${query.toLowerCase()}`,
+        relevance: 90,
+        imageUrl: getImageForSport(query.toUpperCase())
+      })
+    }
+
+    return allResults.sort((a, b) => b.relevance - a.relevance)
+  }
+
+  const calculateRelevance = (itemName: string, query: string): number => {
+    const name = itemName.toLowerCase()
+    const q = query.toLowerCase()
+    
+    if (name === q) return 100
+    if (name.startsWith(q)) return 90
+    if (name.includes(q)) return 80
+    
+    // Check for partial matches
+    const words = q.split(' ')
+    let score = 0
+    words.forEach(word => {
+      if (name.includes(word)) score += 20
+    })
+    
+    return Math.max(score, 10)
+  }
+
+  const getImageForSport = (sport: string): string => {
+    const images: { [key: string]: string } = {
+      'NBA': 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop',
+      'NFL': 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop',
+      'MLB': 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=200&fit=crop',
+      'NHL': 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop',
+      'General': 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=200&fit=crop'
+    }
+    return images[sport] || images['General']
   }
 
   const handleLogin = (user: any) => {
@@ -161,8 +239,8 @@ export default function SearchPage() {
         {/* Results */}
         {isLoading ? (
           <div className="text-center py-12">
-            <i className="fas fa-spinner animate-spin text-2xl text-gray-400 mb-4"></i>
-            <p className="text-gray-600">Searching...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <p className="text-gray-600 mt-4">Searching...</p>
           </div>
         ) : filteredResults.length > 0 ? (
           <div className="space-y-4">
@@ -174,6 +252,13 @@ export default function SearchPage() {
               >
                 <div className="flex items-start space-x-4">
                   <div className="text-2xl">{getResultIcon(result.type)}</div>
+                  {result.imageUrl && (
+                    <img
+                      src={result.imageUrl}
+                      alt={result.title}
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                  )}
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-2">
                       <h3 className="text-lg font-semibold text-gray-900">

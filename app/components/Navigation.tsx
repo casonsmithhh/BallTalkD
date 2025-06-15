@@ -33,7 +33,22 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
     e.preventDefault()
     if (searchQuery.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+      setSearchQuery('')
     }
+  }
+
+  const handleProfileClick = () => {
+    if (currentUser) {
+      router.push('/profile')
+    }
+    setShowUserDropdown(false)
+  }
+
+  const handleSettingsClick = () => {
+    if (currentUser) {
+      router.push('/settings')
+    }
+    setShowUserDropdown(false)
   }
 
   return (
@@ -79,7 +94,7 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
             placeholder="Search teams, players, topics..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="px-3 py-1 rounded-l text-black w-48"
+            className="px-3 py-1 rounded-l text-black w-48 focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
           <button
             type="submit"
@@ -107,20 +122,20 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
             </div>
             {showUserDropdown && (
               <div className="absolute right-0 top-full bg-white min-w-48 shadow-lg z-50 rounded-md overflow-hidden">
-                <Link
-                  href="/profile"
+                <button
+                  onClick={handleProfileClick}
                   className="block w-full px-4 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
                 >
                   <i className="fas fa-user mr-2"></i>
                   Profile
-                </Link>
-                <Link
-                  href="/settings"
+                </button>
+                <button
+                  onClick={handleSettingsClick}
                   className="block w-full px-4 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
                 >
                   <i className="fas fa-cog mr-2"></i>
                   Settings
-                </Link>
+                </button>
                 <button
                   onClick={onLogout}
                   className="block w-full px-4 py-3 text-left text-red-600 hover:bg-gray-100 transition-colors"
