@@ -177,11 +177,11 @@ export default function NFLPage() {
         onLogout={handleLogout} 
       />
       
-      <div className="bg-white py-6 shadow-sm">
+      <div className="bg-blue-100 py-6 shadow-sm">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-center mb-4">
             <div className="text-center">
-              <h1 className="text-3xl font-bold text-gray-900">NFL Hub</h1>
+              <h1 className="text-center font-bold text-gray-900">NFL Hub</h1>
               <p className="text-gray-600 mt-2">Latest news, standings, and analysis - June 15, 2025</p>
             </div>
           </div>
