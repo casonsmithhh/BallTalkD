@@ -84,13 +84,13 @@ export default function NFLPage() {
       east: [
         { name: "Bills", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png", record: "13-3", teamUrl: "/team/nfl/buffalo-bills" },
         { name: "Dolphins", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png", record: "8-8", teamUrl: "/team/nfl/miami-dolphins" },
-        { name: "Jets", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png", record: "7-9", teamUrl: "/team/nfl/new-york-jets" },
-        { name: "Patriots", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png", record: "4-12", teamUrl: "/team/nfl/new-england-patriots" }
+        { name: "Jets", logo: "/images/nfl-logos/jets_logo.png", record: "7-9", teamUrl: "/team/nfl/new-york-jets" },
+        { name: "Patriots", logo: "/images/nfl-logos/patriots_logo.png", record: "4-12", teamUrl: "/team/nfl/new-england-patriots" }
       ],
       north: [
         { name: "Ravens", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png", record: "12-4", teamUrl: "/team/nfl/baltimore-ravens" },
         { name: "Steelers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png", record: "10-6", teamUrl: "/team/nfl/pittsburgh-steelers" },
-        { name: "Bengals", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png", record: "9-7", teamUrl: "/team/nfl/cincinnati-bengals" },
+        { name: "Bengals", logo: "/images/nfl-logos/bengals1_logo.png", record: "9-7", teamUrl: "/team/nfl/cincinnati-bengals" },
         { name: "Browns", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png", record: "3-13", teamUrl: "/team/nfl/cleveland-browns" }
       ],
       south: [
@@ -109,9 +109,9 @@ export default function NFLPage() {
     nfc: {
       east: [
         { name: "Eagles", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png", record: "13-3", teamUrl: "/team/nfl/philadelphia-eagles" },
-        { name: "Commanders", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png", record: "11-5", teamUrl: "/team/nfl/washington-commanders" },
+        { name: "Commanders", logo: "/images/nfl-logos/commanders_logo.png", record: "11-5", teamUrl: "/team/nfl/washington-commanders" },
         { name: "Cowboys", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png", record: "7-9", teamUrl: "/team/nfl/dallas-cowboys" },
-        { name: "Giants", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png", record: "3-13", teamUrl: "/team/nfl/new-york-giants" }
+        { name: "Giants", logo: "/images/nfl-logos/giants_logo.png", record: "3-13", teamUrl: "/team/nfl/new-york-giants" }
       ],
       north: [
         { name: "Lions", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png", record: "14-2", teamUrl: "/team/nfl/detroit-lions" },
@@ -162,7 +162,7 @@ export default function NFLPage() {
       { 
         name: "Aaron Rodgers", 
         team: "New York Jets", 
-        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png",
+        logo: "/images/nfl-logos/jets_logo.png",
         photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
         position: "QB"
       }
@@ -244,7 +244,15 @@ export default function NFLPage() {
                             className="flex items-center justify-between p-3 hover:bg-gray-50 rounded transition-colors group"
                           >
                             <div className="flex items-center">
-                              <img src={team.logo} alt={team.name} className="w-8 h-8 object-contain mr-3" />
+                              <img 
+                                src={team.logo} 
+                                alt={team.name} 
+                                className="w-8 h-8 object-contain mr-3"
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement
+                                  target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
+                                }}
+                              />
                               <span className="font-medium group-hover:text-blue-600">{team.name}</span>
                             </div>
                             <span className="text-sm font-semibold text-gray-600">{team.record}</span>
@@ -273,7 +281,15 @@ export default function NFLPage() {
                             className="flex items-center justify-between p-3 hover:bg-gray-50 rounded transition-colors group"
                           >
                             <div className="flex items-center">
-                              <img src={team.logo} alt={team.name} className="w-8 h-8 object-contain mr-3" />
+                              <img 
+                                src={team.logo} 
+                                alt={team.name} 
+                                className="w-8 h-8 object-contain mr-3"
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement
+                                  target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
+                                }}
+                              />
                               <span className="font-medium group-hover:text-blue-600">{team.name}</span>
                             </div>
                             <span className="text-sm font-semibold text-gray-600">{team.record}</span>
@@ -333,7 +349,15 @@ export default function NFLPage() {
                       <div className="font-medium text-sm">{player.name}</div>
                       <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
                     </div>
-                    <img src={player.logo} alt={player.team} className="w-6 h-6 object-contain" />
+                    <img 
+                      src={player.logo} 
+                      alt={player.team} 
+                      className="w-6 h-6 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
+                      }}
+                    />
                   </div>
                 ))}
               </div>
@@ -355,7 +379,15 @@ export default function NFLPage() {
                       <div className="font-medium text-sm">{player.name}</div>
                       <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
                     </div>
-                    <img src={player.logo} alt={player.team} className="w-6 h-6 object-contain" />
+                    <img 
+                      src={player.logo} 
+                      alt={player.team} 
+                      className="w-6 h-6 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.src = 'https://a.espncdn.com/i/teamlogos/nfl/500/nfl.png'
+                      }}
+                    />
                   </div>
                 ))}
               </div>
