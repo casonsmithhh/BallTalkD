@@ -157,14 +157,14 @@ export default function NFLPage() {
         team: "Green Bay Packers", 
         logo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",
         photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4428850.png",
-        position: "QB"
+        position: "WR"
       },
       { 
         name: "Kirk Cousins", 
         team: "Atlanta Falcons", 
         logo: "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
         photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/14880.png&w=350&h=254",
-        position: "WR"
+        position: "QB"
       }
     ]
   }
