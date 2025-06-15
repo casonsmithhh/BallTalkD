@@ -71,7 +71,17 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
       const response = await fetch(`/api/discussions?sport=${sport}&team=${team || ''}`)
       if (response.ok) {
         const data = await response.json()
-        setPosts(data.discussions || generateSamplePosts())
+        const discussions = data.discussions || generateSamplePosts()
+        // Convert date strings back to Date objects
+        const processedDiscussions = discussions.map((post: any) => ({
+          ...post,
+          createdAt: new Date(post.createdAt),
+          replies: post.replies.map((reply: any) => ({
+            ...reply,
+            createdAt: new Date(reply.createdAt)
+          }))
+        }))
+        setPosts(processedDiscussions)
       } else {
         setPosts(generateSamplePosts())
       }
