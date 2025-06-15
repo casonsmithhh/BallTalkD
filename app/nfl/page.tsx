@@ -137,17 +137,17 @@ export default function NFLPage() {
   const trendingPlayers = {
     up: [
       { 
-        name: "Josh Allen", 
-        team: "Buffalo Bills", 
+        name: "Micheal Penix", 
+        team: "Atlanta Falcons", 
         logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",
         photo: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=100&h=100&fit=crop&crop=face",
         position: "QB"
       },
       { 
-        name: "Caleb Williams", 
-        team: "Chicago Bears", 
-        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
-        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+        name: "Justin (if man) Herbert", 
+        team: "LA Chargers", 
+        logo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4038941.png",
+        photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4038941.png",
         position: "QB"
       }
     ],
