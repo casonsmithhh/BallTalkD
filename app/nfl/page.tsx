@@ -27,10 +27,10 @@ export default function NFLPage() {
 
   const hotTopics = [
     {
-      title: "Chiefs Dynasty Continues",
-      description: "Kansas City wins third straight Super Bowl, making NFL history with unprecedented three-peat.",
-      image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop",
-      discussionUrl: "/discussions/nfl/general/chiefs-dynasty-continues"
+      title: "Bengals reaping recussions for Higgins massive extension",
+      description: "Both Bengals Edge rushers are still holding out",
+      image: "https://images2.minutemediacdn.com/image/upload/c_crop,w_7008,h_3942,x_0,y_297/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/all_49ers/01jxqjaa6kbtbdstt84g.jpg",
+      discussionUrl: "/discussions/nfl/general/bengals-edge-extension"
     },
     {
       title: "Josh Allen's Record Extension",
