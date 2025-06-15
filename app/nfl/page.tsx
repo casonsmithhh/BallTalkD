@@ -27,28 +27,28 @@ export default function NFLPage() {
 
   const hotTopics = [
     {
-      title: "Bengals reaping recussions for Higgins massive extension",
-      description: "Both Bengals Edge rushers are still holding out",
-      image: "https://images2.minutemediacdn.com/image/upload/c_crop,w_7008,h_3942,x_0,y_297/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/all_49ers/01jxqjaa6kbtbdstt84g.jpg",
+      title: "Defense wins championships?",
+      description: "Bengals Edge Rushers Trey Hendricks and Shemar Stewart are still holding out for financial reasons",
+      image: "https://images2.minutemediacdn.com/image/upload/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/https-3A-2F-2Fstripehype-com-2Fwp-content-2Fuploads-2Fimagn-images-2F2018-2F08-2F17809877-850x560-ec054703e5b25bd5382ea85f1cf29338.jpg",
       discussionUrl: "/discussions/nfl/general/bengals-edge-extension"
     },
     {
-      title: "Josh Allen's Record Extension",
-      description: "Bills quarterback becomes highest-paid player in NFL history with 6-year, $300 million deal.",
-      image: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=200&fit=crop",
-      discussionUrl: "/discussions/nfl/general/josh-allen-record-extension"
+      title: "Time to Tank?",
+      description: "Steelers sign 42 year old Aaron Rodgers, is it time for them to finally invest in an elite QB talent?",
+      image: "https://images2.minutemediacdn.com/image/upload/c_crop,w_3000,h_1687,x_0,y_0/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/all_steelers/01jxr2det3bsqxg752re.jpg",
+      discussionUrl: "/discussions/nfl/general/aaron-rodgers-steelers-sign"
     },
     {
-      title: "Rookie QB Development",
-      description: "Caleb Williams, Jayden Daniels, and Drake Maye showing different trajectories in OTAs.",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop",
-      discussionUrl: "/discussions/nfl/general/rookie-qb-development"
+      title: "Sophmore Slump or Jump?",
+      description: "How will Caleb Williams, Jayden Daniels, Bo Nix, Micheal Penix, and Drake Maye show up after impressive rookie seasons.",
+      image: "https://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2025%2F0610%2Fr1503427_2_1296x729_16%2D9.jpg",
+      discussionUrl: "/discussions/nfl/general/soph-qb-development"
     },
     {
-      title: "2025 Draft Prep",
-      description: "Teams preparing for upcoming draft with college prospects declaring and workouts beginning.",
-      image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop",
-      discussionUrl: "/discussions/nfl/general/2025-draft-prep"
+      title: "B2B?",
+      description: "Do the Eagles have the best shot to win it next year, after their dominant Super Bowl run?",
+      image: "https://cdn.abcotvs.com/dip/images/15887147_020925-wpvi-eagles-trophy-img.jpg?w=1600",
+      discussionUrl: "/discussions/nfl/general/eagles-b2b"
     }
   ]
 
