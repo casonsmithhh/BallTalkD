@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface NavigationProps {
   currentUser: any
@@ -12,6 +13,8 @@ interface NavigationProps {
 export default function Navigation({ currentUser, onLogin, onLogout }: NavigationProps) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showUserDropdown, setShowUserDropdown] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const router = useRouter()
 
   const sportsLinks = [
     { name: 'NBA', href: '/nba' },
@@ -25,6 +28,13 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
     { name: 'NCAA Football', href: '/ncaa-fb' },
     { name: 'NCAA Basketball', href: '/ncaa-bb' },
   ]
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+    }
+  }
 
   return (
     <nav className="flex justify-between items-center bg-gray-900 px-8 py-3 text-white">
@@ -57,15 +67,27 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
       </div>
 
       <div className="text-center">
-        <span className="text-3xl font-bold">BallTalk</span>
+        <Link href="/" className="text-3xl font-bold hover:text-orange-400 transition-colors">
+          BallTalk
+        </Link>
       </div>
 
       <div className="flex items-center space-x-4">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="px-3 py-1 rounded text-black"
-        />
+        <form onSubmit={handleSearch} className="flex">
+          <input
+            type="text"
+            placeholder="Search teams, players, topics..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="px-3 py-1 rounded-l text-black w-48"
+          />
+          <button
+            type="submit"
+            className="bg-orange-500 hover:bg-orange-600 px-3 py-1 rounded-r transition-colors"
+          >
+            <i className="fas fa-search"></i>
+          </button>
+        </form>
         
         {currentUser ? (
           <div className="relative">
@@ -84,7 +106,21 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
               </button>
             </div>
             {showUserDropdown && (
-              <div className="absolute right-0 top-full bg-white min-w-32 shadow-lg z-50 rounded-md overflow-hidden">
+              <div className="absolute right-0 top-full bg-white min-w-48 shadow-lg z-50 rounded-md overflow-hidden">
+                <Link
+                  href="/profile"
+                  className="block w-full px-4 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
+                >
+                  <i className="fas fa-user mr-2"></i>
+                  Profile
+                </Link>
+                <Link
+                  href="/settings"
+                  className="block w-full px-4 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
+                >
+                  <i className="fas fa-cog mr-2"></i>
+                  Settings
+                </Link>
                 <button
                   onClick={onLogout}
                   className="block w-full px-4 py-3 text-left text-red-600 hover:bg-gray-100 transition-colors"
