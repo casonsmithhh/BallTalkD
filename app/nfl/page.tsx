@@ -208,7 +208,7 @@ export default function NFLPage() {
                       <p className="text-gray-600 mb-4">{topic.description}</p>
                       <Link 
                         href={topic.discussionUrl}
-                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors inline-block"
+                        className="bg-white text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors inline-block"
                       >
                         Join Discussion →
                       </Link>
