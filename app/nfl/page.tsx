@@ -139,32 +139,32 @@ export default function NFLPage() {
       { 
         name: "Micheal Penix", 
         team: "Atlanta Falcons", 
-        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",
-        photo: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=100&h=100&fit=crop&crop=face",
+        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
+        photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4360423.png&w=350&h=254",
         position: "QB"
       },
       { 
         name: "Justin (if man) Herbert", 
         team: "LA Chargers", 
-        logo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4038941.png",
+        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png",
         photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4038941.png",
         position: "QB"
       }
     ],
     down: [
       { 
-        name: "Dak Prescott", 
-        team: "Dallas Cowboys", 
-        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
-        photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+        name: "Dontayvion Wicks", 
+        team: "Green Bay Packers", 
+        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",
+        photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4428850.png",
         position: "QB"
       },
       { 
-        name: "Aaron Rodgers", 
-        team: "New York Jets", 
-        logo: "/images/nfl-logos/jets_logo.png",
-        photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
-        position: "QB"
+        name: "Kirk Cousins", 
+        team: "Atlanta Falcons", 
+        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
+        photo: "https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/14880.png&w=350&h=254",
+        position: "WR"
       }
     ]
   }
