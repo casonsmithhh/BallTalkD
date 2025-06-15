@@ -27,46 +27,46 @@ export default function NBAPage() {
 
   const hotTopics = [
     {
-      title: "MVP Race 2024-25",
-      description: "Shai Gilgeous-Alexander leads with 31.2 PPG, leading Thunder to #1 seed in West (34-6).",
-      image: "https://a.espncdn.com/i/teamlogos/nba/500/okc.png"
+      title: "NBA Finals Game 6 Tonight",
+      description: "Celtics lead series 3-2 and can capture back-to-back championships with victory at TD Garden.",
+      image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop"
+    },
+    {
+      title: "Jokic Wins Third MVP",
+      description: "Denver center becomes ninth player in NBA history to win three MVP awards after historic season.",
+      image: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=200&fit=crop"
+    },
+    {
+      title: "Cooper Flagg Declares for Draft",
+      description: "Duke freshman phenom officially enters 2025 NBA Draft, projected to go first overall.",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop"
     },
     {
       title: "Trade Deadline Buzz",
       description: "February 6th deadline approaching with several stars potentially on the move.",
-      image: "https://a.espncdn.com/i/teamlogos/nba/500/nba.png"
-    },
-    {
-      title: "Celtics Defending Title",
-      description: "Boston looks to repeat as champions with Jayson Tatum leading the charge.",
-      image: "https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
-    },
-    {
-      title: "Rookie Class Impact",
-      description: "Zaccharie Risacher and Alex Sarr making immediate impacts for their teams.",
-      image: "https://a.espncdn.com/i/teamlogos/nba/500/atl.png"
+      image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop"
     }
   ]
 
   const currentNews = [
     {
-      title: "Thunder Dominate Western Conference",
-      description: "Oklahoma City's 34-6 record has them as clear favorites for #1 seed.",
+      title: "Celtics Look to Close Out Finals",
+      description: "Boston leads series 3-2 and can capture back-to-back championships with victory at home.",
       source: "ESPN NBA"
     },
     {
-      title: "Jokic's Triple-Double Chase",
-      description: "Denver's center averaging near triple-double with 26.8 PPG, 13.1 RPG, 9.9 APG.",
+      title: "Jokic's Historic MVP Season",
+      description: "Denver center becomes ninth player in NBA history to win three MVP awards.",
       source: "The Athletic"
     },
     {
-      title: "Lakers Playoff Push",
-      description: "LeBron and AD trying to secure playoff positioning in competitive West.",
+      title: "Draft Lottery Results",
+      description: "Cooper Flagg expected to go first overall in upcoming 2025 NBA Draft.",
       source: "NBA.com"
     },
     {
-      title: "All-Star Weekend Preview",
-      description: "San Francisco set to host spectacular All-Star festivities in February.",
+      title: "Summer League Preview",
+      description: "Rookies and young players set to showcase skills in Las Vegas this summer.",
       source: "Bleacher Report"
     }
   ]
@@ -96,12 +96,36 @@ export default function NBAPage() {
 
   const trendingPlayers = {
     up: [
-      { name: "Shai Gilgeous-Alexander", team: "Oklahoma City Thunder", logo: "https://a.espncdn.com/i/teamlogos/nba/500/okc.png" },
-      { name: "Ja Morant", team: "Memphis Grizzlies", logo: "https://a.espncdn.com/i/teamlogos/nba/500/mem.png" }
+      { 
+        name: "Jayson Tatum", 
+        team: "Boston Celtics", 
+        logo: "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
+        photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+        position: "SF"
+      },
+      { 
+        name: "Nikola Jokic", 
+        team: "Denver Nuggets", 
+        logo: "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+        position: "C"
+      }
     ],
     down: [
-      { name: "Giannis Antetokounmpo", team: "Milwaukee Bucks", logo: "https://a.espncdn.com/i/teamlogos/nba/500/mil.png" },
-      { name: "Stephen Curry", team: "Golden State Warriors", logo: "https://a.espncdn.com/i/teamlogos/nba/500/gs.png" }
+      { 
+        name: "Giannis Antetokounmpo", 
+        team: "Milwaukee Bucks", 
+        logo: "https://a.espncdn.com/i/teamlogos/nba/500/mil.png",
+        photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+        position: "PF"
+      },
+      { 
+        name: "Stephen Curry", 
+        team: "Golden State Warriors", 
+        logo: "https://a.espncdn.com/i/teamlogos/nba/500/gs.png",
+        photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+        position: "PG"
+      }
     ]
   }
 
@@ -115,8 +139,17 @@ export default function NBAPage() {
       
       <div className="bg-white py-6 shadow-sm">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-bold text-gray-900 text-center">🏀 NBA Hub</h1>
-          <p className="text-gray-600 text-center mt-2">Latest news, standings, and analysis</p>
+          <div className="flex items-center justify-center mb-4">
+            <img
+              src="https://logos-world.net/wp-content/uploads/2020/06/NBA-Logo.png"
+              alt="NBA Logo"
+              className="w-16 h-16 mr-4"
+            />
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-gray-900">NBA Hub</h1>
+              <p className="text-gray-600 mt-2">Latest news, standings, and analysis</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -197,9 +230,9 @@ export default function NBAPage() {
                 {currentNews.map((article, index) => (
                   <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <img 
-                      src="https://a.espncdn.com/i/teamlogos/nba/500/nba.png" 
+                      src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop" 
                       alt="NBA News" 
-                      className="w-full h-32 object-contain bg-gray-100"
+                      className="w-full h-32 object-cover"
                     />
                     <div className="p-4">
                       <h4 className="font-semibold mb-2 text-gray-900">{article.title}</h4>
@@ -224,12 +257,17 @@ export default function NBAPage() {
                   Trending Up
                 </h4>
                 {trendingPlayers.up.map((player, index) => (
-                  <div key={index} className="flex items-center p-2 border-b border-gray-100 last:border-b-0">
-                    <img src={player.logo} alt={player.team} className="w-8 h-8 object-contain mr-3" />
-                    <div>
+                  <div key={index} className="flex items-center p-3 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 rounded">
+                    <img 
+                      src={player.photo} 
+                      alt={player.name} 
+                      className="w-12 h-12 rounded-full object-cover mr-3"
+                    />
+                    <div className="flex-1">
                       <div className="font-medium text-sm">{player.name}</div>
-                      <div className="text-xs text-gray-500">{player.team}</div>
+                      <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
                     </div>
+                    <img src={player.logo} alt={player.team} className="w-6 h-6 object-contain" />
                   </div>
                 ))}
               </div>
@@ -241,12 +279,17 @@ export default function NBAPage() {
                   Trending Down
                 </h4>
                 {trendingPlayers.down.map((player, index) => (
-                  <div key={index} className="flex items-center p-2 border-b border-gray-100 last:border-b-0">
-                    <img src={player.logo} alt={player.team} className="w-8 h-8 object-contain mr-3" />
-                    <div>
+                  <div key={index} className="flex items-center p-3 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 rounded">
+                    <img 
+                      src={player.photo} 
+                      alt={player.name} 
+                      className="w-12 h-12 rounded-full object-cover mr-3"
+                    />
+                    <div className="flex-1">
                       <div className="font-medium text-sm">{player.name}</div>
-                      <div className="text-xs text-gray-500">{player.team}</div>
+                      <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
                     </div>
+                    <img src={player.logo} alt={player.team} className="w-6 h-6 object-contain" />
                   </div>
                 ))}
               </div>

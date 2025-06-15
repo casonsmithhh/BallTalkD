@@ -35,19 +35,19 @@ export default function NFLPage() {
     {
       title: "Josh Allen's Record Extension",
       description: "Bills quarterback becomes highest-paid player in NFL history with 6-year, $300 million deal.",
-      image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop",
+      image: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=200&fit=crop",
       discussionUrl: "/discussions/nfl/general/josh-allen-record-extension"
     },
     {
       title: "Rookie QB Development",
       description: "Caleb Williams, Jayden Daniels, and Drake Maye showing different trajectories in OTAs.",
-      image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop",
       discussionUrl: "/discussions/nfl/general/rookie-qb-development"
     },
     {
       title: "2025 Draft Prep",
       description: "Teams preparing for upcoming draft with college prospects declaring and workouts beginning.",
-      image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop",
+      image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop",
       discussionUrl: "/discussions/nfl/general/2025-draft-prep"
     }
   ]
@@ -136,12 +136,36 @@ export default function NFLPage() {
 
   const trendingPlayers = {
     up: [
-      { name: "Josh Allen", team: "Buffalo Bills", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" },
-      { name: "Caleb Williams", team: "Chicago Bears", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png" }
+      { 
+        name: "Josh Allen", 
+        team: "Buffalo Bills", 
+        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",
+        photo: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=100&h=100&fit=crop&crop=face",
+        position: "QB"
+      },
+      { 
+        name: "Caleb Williams", 
+        team: "Chicago Bears", 
+        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
+        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+        position: "QB"
+      }
     ],
     down: [
-      { name: "Dak Prescott", team: "Dallas Cowboys", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png" },
-      { name: "Aaron Rodgers", team: "New York Jets", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png" }
+      { 
+        name: "Dak Prescott", 
+        team: "Dallas Cowboys", 
+        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
+        photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+        position: "QB"
+      },
+      { 
+        name: "Aaron Rodgers", 
+        team: "New York Jets", 
+        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png",
+        photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+        position: "QB"
+      }
     ]
   }
 
@@ -155,8 +179,17 @@ export default function NFLPage() {
       
       <div className="bg-white py-6 shadow-sm">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-bold text-gray-900 text-center">🏈 NFL Hub</h1>
-          <p className="text-gray-600 text-center mt-2">Latest news, standings, and analysis - June 15, 2025</p>
+          <div className="flex items-center justify-center mb-4">
+            <img
+              src="https://logos-world.net/wp-content/uploads/2020/06/NFL-Logo.png"
+              alt="NFL Logo"
+              className="w-16 h-16 mr-4"
+            />
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-gray-900">NFL Hub</h1>
+              <p className="text-gray-600 mt-2">Latest news, standings, and analysis - June 15, 2025</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -192,7 +225,7 @@ export default function NFLPage() {
 
             {/* NFL Teams by Division */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">🏈 NFL Teams & Standings</h2>
+              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">🏈 All 32 NFL Teams</h2>
               
               {/* AFC */}
               <div className="mb-8">
@@ -208,11 +241,11 @@ export default function NFLPage() {
                           <Link 
                             key={index} 
                             href={team.teamUrl}
-                            className="flex items-center justify-between p-2 hover:bg-gray-50 rounded transition-colors"
+                            className="flex items-center justify-between p-3 hover:bg-gray-50 rounded transition-colors group"
                           >
                             <div className="flex items-center">
                               <img src={team.logo} alt={team.name} className="w-8 h-8 object-contain mr-3" />
-                              <span className="font-medium">{team.name}</span>
+                              <span className="font-medium group-hover:text-blue-600">{team.name}</span>
                             </div>
                             <span className="text-sm font-semibold text-gray-600">{team.record}</span>
                           </Link>
@@ -237,11 +270,11 @@ export default function NFLPage() {
                           <Link 
                             key={index} 
                             href={team.teamUrl}
-                            className="flex items-center justify-between p-2 hover:bg-gray-50 rounded transition-colors"
+                            className="flex items-center justify-between p-3 hover:bg-gray-50 rounded transition-colors group"
                           >
                             <div className="flex items-center">
                               <img src={team.logo} alt={team.name} className="w-8 h-8 object-contain mr-3" />
-                              <span className="font-medium">{team.name}</span>
+                              <span className="font-medium group-hover:text-blue-600">{team.name}</span>
                             </div>
                             <span className="text-sm font-semibold text-gray-600">{team.record}</span>
                           </Link>
@@ -290,12 +323,17 @@ export default function NFLPage() {
                   Trending Up
                 </h4>
                 {trendingPlayers.up.map((player, index) => (
-                  <div key={index} className="flex items-center p-2 border-b border-gray-100 last:border-b-0">
-                    <img src={player.logo} alt={player.team} className="w-8 h-8 object-contain mr-3" />
-                    <div>
+                  <div key={index} className="flex items-center p-3 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 rounded">
+                    <img 
+                      src={player.photo} 
+                      alt={player.name} 
+                      className="w-12 h-12 rounded-full object-cover mr-3"
+                    />
+                    <div className="flex-1">
                       <div className="font-medium text-sm">{player.name}</div>
-                      <div className="text-xs text-gray-500">{player.team}</div>
+                      <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
                     </div>
+                    <img src={player.logo} alt={player.team} className="w-6 h-6 object-contain" />
                   </div>
                 ))}
               </div>
@@ -307,12 +345,17 @@ export default function NFLPage() {
                   Trending Down
                 </h4>
                 {trendingPlayers.down.map((player, index) => (
-                  <div key={index} className="flex items-center p-2 border-b border-gray-100 last:border-b-0">
-                    <img src={player.logo} alt={player.team} className="w-8 h-8 object-contain mr-3" />
-                    <div>
+                  <div key={index} className="flex items-center p-3 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 rounded">
+                    <img 
+                      src={player.photo} 
+                      alt={player.name} 
+                      className="w-12 h-12 rounded-full object-cover mr-3"
+                    />
+                    <div className="flex-1">
                       <div className="font-medium text-sm">{player.name}</div>
-                      <div className="text-xs text-gray-500">{player.team}</div>
+                      <div className="text-xs text-gray-500">{player.position} • {player.team}</div>
                     </div>
+                    <img src={player.logo} alt={player.team} className="w-6 h-6 object-contain" />
                   </div>
                 ))}
               </div>

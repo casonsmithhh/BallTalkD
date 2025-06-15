@@ -6,7 +6,7 @@ export default function SportsGrid() {
       name: 'NBA',
       description: 'Trade talk, MVP debates, young stars and legendary moments.',
       href: '/nba',
-      logo: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NBA-Logo.png',
       teams: ['Lakers', 'Warriors', 'Celtics', 'Heat'],
       image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop'
     },
@@ -14,7 +14,7 @@ export default function SportsGrid() {
       name: 'NFL',
       description: 'Break down the draft, breakout rookies, and playoff races.',
       href: '/nfl',
-      logo: 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NFL-Logo.png',
       teams: ['Chiefs', 'Bills', 'Cowboys', 'Patriots'],
       image: 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop'
     },
@@ -22,7 +22,7 @@ export default function SportsGrid() {
       name: 'NHL',
       description: 'Stanley Cup matchups, trade rumors, and power rankings.',
       href: '/nhl',
-      logo: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NHL-Logo.png',
       teams: ['Rangers', 'Bruins', 'Penguins', 'Blackhawks'],
       image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=200&fit=crop'
     },
@@ -30,7 +30,7 @@ export default function SportsGrid() {
       name: 'MLB',
       description: 'Pitching duels, power hitters, and divisional drama.',
       href: '/mlb',
-      logo: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/MLB-Logo.png',
       teams: ['Yankees', 'Dodgers', 'Red Sox', 'Giants'],
       image: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=400&h=200&fit=crop'
     },
@@ -38,7 +38,7 @@ export default function SportsGrid() {
       name: 'MLS',
       description: 'Postseason hopes, Messi-mania, and rising U.S. stars.',
       href: '/mls',
-      logo: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/MLS-Logo.png',
       teams: ['LAFC', 'Inter Miami', 'Seattle', 'Atlanta'],
       image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop'
     },
@@ -46,7 +46,7 @@ export default function SportsGrid() {
       name: 'Soccer',
       description: 'Global transfers, Champions League, World Cup debates.',
       href: '/soccer',
-      logo: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/UEFA-Champions-League-Logo.png',
       teams: ['Real Madrid', 'Barcelona', 'Man City', 'Liverpool'],
       image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=200&fit=crop'
     },
@@ -54,7 +54,7 @@ export default function SportsGrid() {
       name: 'Tennis',
       description: 'Grand Slams, GOAT debates, and rising stars.',
       href: '/tennis',
-      logo: 'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/ATP-Logo.png',
       teams: ['ATP', 'WTA', 'Grand Slams', 'Rankings'],
       image: 'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=400&h=200&fit=crop'
     },
@@ -62,7 +62,7 @@ export default function SportsGrid() {
       name: 'Formula 1',
       description: 'Team dynamics, qualifying drama, and global circuits.',
       href: '/f1',
-      logo: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/Formula-1-Logo.png',
       teams: ['Red Bull', 'Mercedes', 'Ferrari', 'McLaren'],
       image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop'
     },
@@ -70,7 +70,7 @@ export default function SportsGrid() {
       name: 'NCAA Football',
       description: 'Heisman hopefuls, rivalries, and bowl projections.',
       href: '/ncaa-fb',
-      logo: 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NCAA-Logo.png',
       teams: ['Alabama', 'Georgia', 'Ohio State', 'Michigan'],
       image: 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop'
     },
@@ -78,7 +78,7 @@ export default function SportsGrid() {
       name: 'NCAA Basketball',
       description: 'March Madness, blue bloods, and one-and-dones.',
       href: '/ncaa-bb',
-      logo: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=64&h=64&fit=crop',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NCAA-Logo.png',
       teams: ['Duke', 'UNC', 'Kentucky', 'Kansas'],
       image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=200&fit=crop'
     }

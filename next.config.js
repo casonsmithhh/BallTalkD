@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove output: 'export' for Vercel deployment
-  // output: 'export', // Only use this for static hosting
-  
   images: {
     unoptimized: true,
     domains: [
@@ -17,7 +14,8 @@ const nextConfig = {
       'www.citypng.com',
       'seeklogo.com',
       'smsumustangs.com',
-      'drroto.com'
+      'drroto.com',
+      'images.unsplash.com'
     ]
   },
   eslint: {
@@ -26,7 +24,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Add experimental features for better compatibility
   experimental: {
     serverComponentsExternalPackages: []
   }
