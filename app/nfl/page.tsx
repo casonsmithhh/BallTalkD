@@ -27,101 +27,109 @@ export default function NFLPage() {
 
   const hotTopics = [
     {
-      title: "MVP Race 2024",
-      description: "Josh Allen leads with 4,306 passing yards and 40 total TDs, leading Buffalo to #2 AFC seed.",
-      image: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png"
+      title: "Chiefs Dynasty Continues",
+      description: "Kansas City wins third straight Super Bowl, making NFL history with unprecedented three-peat.",
+      image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop",
+      discussionUrl: "/discussions/nfl/general/chiefs-dynasty-continues"
     },
     {
-      title: "Playoff Picture",
-      description: "Bills, Ravens, Chiefs, and Lions emerge as top contenders heading into divisional round.",
-      image: "https://static.www.nfl.com/image/private/t_new_photo_album/league/fvjfzllenfkmfj8hpe8s"
+      title: "Josh Allen's Record Extension",
+      description: "Bills quarterback becomes highest-paid player in NFL history with 6-year, $300 million deal.",
+      image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop",
+      discussionUrl: "/discussions/nfl/general/josh-allen-record-extension"
     },
     {
-      title: "Rookie Watch",
-      description: "Caleb Williams and Jayden Daniels showing promise in their development as rookie QBs.",
-      image: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png"
+      title: "Rookie QB Development",
+      description: "Caleb Williams, Jayden Daniels, and Drake Maye showing different trajectories in OTAs.",
+      image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop",
+      discussionUrl: "/discussions/nfl/general/rookie-qb-development"
     },
     {
-      title: "Trade Deadline Impact",
-      description: "Recent moves by contenders shaping the playoff landscape and championship odds.",
-      image: "https://static.www.nfl.com/image/private/t_new_photo_album/league/o8p5vfx7ew2ipgf8y41e"
+      title: "2025 Draft Prep",
+      description: "Teams preparing for upcoming draft with college prospects declaring and workouts beginning.",
+      image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop",
+      discussionUrl: "/discussions/nfl/general/2025-draft-prep"
     }
   ]
 
   const currentNews = [
     {
-      title: "Bills Clinch AFC East",
-      description: "Buffalo secures division title with Josh Allen's MVP-caliber season performance.",
-      source: "ESPN NFL"
+      title: "Chiefs Begin Quest for Fourth Straight Title",
+      description: "Kansas City opens training camp next month as heavy favorites to make NFL history.",
+      source: "ESPN NFL",
+      publishedAt: "2 hours ago"
     },
     {
-      title: "Chiefs Dynasty Continues",
-      description: "Kansas City remains playoff favorite after back-to-back Super Bowl victories.",
-      source: "NFL Network"
+      title: "Caleb Williams Impresses in Bears OTAs",
+      description: "First overall pick showing command of offense and strong arm in organized team activities.",
+      source: "NFL Network",
+      publishedAt: "4 hours ago"
     },
     {
-      title: "Lions Roar in NFC",
-      description: "Detroit emerges as legitimate Super Bowl contender with explosive offense.",
-      source: "The Athletic"
+      title: "Bills Sign Josh Allen to Record Extension",
+      description: "Buffalo quarterback becomes highest-paid player in NFL history with massive deal.",
+      source: "The Athletic",
+      publishedAt: "6 hours ago"
     },
     {
-      title: "Rookie QB Development",
-      description: "Williams, Daniels, and Maye showing different trajectories in year one.",
-      source: "Pro Football Focus"
+      title: "Lions Maintain Championship Expectations",
+      description: "Detroit looking to build on successful 2024 season with strong roster additions.",
+      source: "Pro Football Focus",
+      publishedAt: "8 hours ago"
     }
   ]
 
   const divisions = {
     afc: {
       east: [
-        { name: "Bills", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png", record: "13-3" },
-        { name: "Dolphins", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png", record: "8-8" },
-        { name: "Jets", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png", record: "7-9" },
-        { name: "Patriots", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png", record: "4-12" }
+        { name: "Bills", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png", record: "13-3", teamUrl: "/team/nfl/buffalo-bills" },
+        { name: "Dolphins", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png", record: "8-8", teamUrl: "/team/nfl/miami-dolphins" },
+        { name: "Jets", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png", record: "7-9", teamUrl: "/team/nfl/new-york-jets" },
+        { name: "Patriots", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png", record: "4-12", teamUrl: "/team/nfl/new-england-patriots" }
       ],
       north: [
-        { name: "Ravens", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png", record: "12-4" },
-        { name: "Steelers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png", record: "10-6" },
-        { name: "Bengals", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png", record: "9-7" },
-        { name: "Browns", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png", record: "3-13" }
+        { name: "Ravens", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png", record: "12-4", teamUrl: "/team/nfl/baltimore-ravens" },
+        { name: "Steelers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png", record: "10-6", teamUrl: "/team/nfl/pittsburgh-steelers" },
+        { name: "Bengals", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png", record: "9-7", teamUrl: "/team/nfl/cincinnati-bengals" },
+        { name: "Browns", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png", record: "3-13", teamUrl: "/team/nfl/cleveland-browns" }
       ],
       south: [
-        { name: "Texans", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png", record: "10-6" },
-        { name: "Colts", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png", record: "8-8" },
-        { name: "Jaguars", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png", record: "4-12" },
-        { name: "Titans", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png", record: "3-13" }
+        { name: "Texans", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png", record: "10-6", teamUrl: "/team/nfl/houston-texans" },
+        { name: "Colts", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png", record: "8-8", teamUrl: "/team/nfl/indianapolis-colts" },
+        { name: "Jaguars", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png", record: "4-12", teamUrl: "/team/nfl/jacksonville-jaguars" },
+        { name: "Titans", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png", record: "3-13", teamUrl: "/team/nfl/tennessee-titans" }
       ],
       west: [
-        { name: "Chiefs", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png", record: "15-1" },
-        { name: "Chargers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png", record: "11-5" },
-        { name: "Broncos", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png", record: "9-7" },
-        { name: "Raiders", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png", record: "4-12" }
+        { name: "Chiefs", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png", record: "15-1", teamUrl: "/team/nfl/kansas-city-chiefs" },
+        { name: "Chargers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png", record: "11-5", teamUrl: "/team/nfl/los-angeles-chargers" },
+        { name: "Broncos", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/den.png", record: "9-7", teamUrl: "/team/nfl/denver-broncos" },
+        { name: "Raiders", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png", record: "4-12", teamUrl: "/team/nfl/las-vegas-raiders" }
       ]
     },
     nfc: {
       east: [
-        { name: "Eagles", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png", record: "13-3" },
-        { name: "Commanders", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png", record: "11-5" },
-        { name: "Cowboys", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png", record: "7-9" },
-        { name: "Giants", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png", record: "3-13" }
+        { name: "Eagles", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png", record: "13-3", teamUrl: "/team/nfl/philadelphia-eagles" },
+        { name: "Commanders", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png", record: "11-5", teamUrl: "/team/nfl/washington-commanders" },
+        { name: "Cowboys", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png", record: "7-9", teamUrl: "/team/nfl/dallas-cowboys" },
+        { name: "Giants", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png", record: "3-13", teamUrl: "/team/nfl/new-york-giants" }
       ],
       north: [
-        { name: "Lions", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png", record: "14-2" },
-        { name: "Vikings", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/min.png", record: "13-3" },
-        { name: "Packers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png", record: "11-5" },
-        { name: "Bears", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png", record: "4-12" }
+        { name: "Lions", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png", record: "14-2", teamUrl: "/team/nfl/detroit-lions" },
+        { name: "Vikings", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/min.png", record: "13-3", teamUrl: "/team/nfl/minnesota-vikings" },
+        { name: "Packers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png", record: "11-5", teamUrl: "/team/nfl/green-bay-packers" },
+        { name: "Bears", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png", record: "4-12", teamUrl: "/team/nfl/chicago-bears" }
       ],
       south: [
-        { name: "Buccaneers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png", record: "9-7" },
-        { name: "Falcons", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png", record: "8-8" },
-        { name: "Saints", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/no.png", record: "5-11" },
-        { name: "Panthers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/car.png", record: "4-12" }
+        { name: "Buccaneers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png", record: "9-7", teamUrl: "/team/nfl/tampa-bay-buccaneers" },
+        { name: "Falcons", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png", record: "8-8", teamUrl: "/team/nfl/atlanta-falcons" },
+        { name: "Saints", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/no.png", record: "5-11", teamUrl: "/team/nfl/new-orleans-saints" },
+        { name: "Panthers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/car.png", record: "4-12", teamUrl: "/team/nfl/carolina-panthers" }
       ],
       west: [
-        { name: "Rams", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png", record: "10-6" },
-        { name: "Seahawks", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png", record: "9-7" },
-        { name: "Cardinals", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png", record: "8-8" },
-        { name: "49ers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png", record: "6-10" }
+        { name: "Rams", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png", record: "10-6", teamUrl: "/team/nfl/los-angeles-rams" },
+        { name: "Seahawks", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png", record: "9-7", teamUrl: "/team/nfl/seattle-seahawks" },
+        { name: "Cardinals", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png", record: "8-8", teamUrl: "/team/nfl/arizona-cardinals" },
+        { name: "49ers", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png", record: "6-10", teamUrl: "/team/nfl/san-francisco-49ers" }
       ]
     }
   }
@@ -129,7 +137,7 @@ export default function NFLPage() {
   const trendingPlayers = {
     up: [
       { name: "Josh Allen", team: "Buffalo Bills", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" },
-      { name: "Jared Goff", team: "Detroit Lions", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png" }
+      { name: "Caleb Williams", team: "Chicago Bears", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png" }
     ],
     down: [
       { name: "Dak Prescott", team: "Dallas Cowboys", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png" },
@@ -148,7 +156,7 @@ export default function NFLPage() {
       <div className="bg-white py-6 shadow-sm">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-3xl font-bold text-gray-900 text-center">🏈 NFL Hub</h1>
-          <p className="text-gray-600 text-center mt-2">Latest news, standings, and analysis</p>
+          <p className="text-gray-600 text-center mt-2">Latest news, standings, and analysis - June 15, 2025</p>
         </div>
       </div>
 
@@ -161,15 +169,22 @@ export default function NFLPage() {
               <h2 className="text-2xl font-bold mb-6 text-gray-900">🔥 Hot NFL Topics</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {hotTopics.map((topic, index) => (
-                  <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <div className="flex items-center mb-4">
-                      <img src={topic.image} alt={topic.title} className="w-12 h-12 object-contain mr-4" />
-                      <h3 className="text-lg font-semibold text-gray-900">{topic.title}</h3>
+                  <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <img 
+                      src={topic.image} 
+                      alt={topic.title} 
+                      className="w-full h-32 object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{topic.title}</h3>
+                      <p className="text-gray-600 mb-4">{topic.description}</p>
+                      <Link 
+                        href={topic.discussionUrl}
+                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors inline-block"
+                      >
+                        Join Discussion →
+                      </Link>
                     </div>
-                    <p className="text-gray-600 mb-4">{topic.description}</p>
-                    <Link href="#" className="text-orange-500 font-medium hover:text-orange-600">
-                      Join Discussion →
-                    </Link>
                   </div>
                 ))}
               </div>
@@ -177,7 +192,7 @@ export default function NFLPage() {
 
             {/* NFL Teams by Division */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">🏈 NFL Standings</h2>
+              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">🏈 NFL Teams & Standings</h2>
               
               {/* AFC */}
               <div className="mb-8">
@@ -190,13 +205,17 @@ export default function NFLPage() {
                       </h4>
                       <div className="space-y-2">
                         {teams.map((team, index) => (
-                          <div key={index} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                          <Link 
+                            key={index} 
+                            href={team.teamUrl}
+                            className="flex items-center justify-between p-2 hover:bg-gray-50 rounded transition-colors"
+                          >
                             <div className="flex items-center">
                               <img src={team.logo} alt={team.name} className="w-8 h-8 object-contain mr-3" />
                               <span className="font-medium">{team.name}</span>
                             </div>
                             <span className="text-sm font-semibold text-gray-600">{team.record}</span>
-                          </div>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -215,13 +234,17 @@ export default function NFLPage() {
                       </h4>
                       <div className="space-y-2">
                         {teams.map((team, index) => (
-                          <div key={index} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                          <Link 
+                            key={index} 
+                            href={team.teamUrl}
+                            className="flex items-center justify-between p-2 hover:bg-gray-50 rounded transition-colors"
+                          >
                             <div className="flex items-center">
                               <img src={team.logo} alt={team.name} className="w-8 h-8 object-contain mr-3" />
                               <span className="font-medium">{team.name}</span>
                             </div>
                             <span className="text-sm font-semibold text-gray-600">{team.record}</span>
-                          </div>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -237,14 +260,17 @@ export default function NFLPage() {
                 {currentNews.map((article, index) => (
                   <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <img 
-                      src="https://static.www.nfl.com/image/private/t_new_photo_album/league/nfl-logo-shield" 
+                      src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=400&h=200&fit=crop" 
                       alt="NFL News" 
                       className="w-full h-32 object-cover"
                     />
                     <div className="p-4">
                       <h4 className="font-semibold mb-2 text-gray-900">{article.title}</h4>
                       <p className="text-sm text-gray-600 mb-2">{article.description}</p>
-                      <p className="text-xs text-orange-500 font-medium">{article.source}</p>
+                      <div className="flex justify-between items-center">
+                        <p className="text-xs text-orange-500 font-medium">{article.source}</p>
+                        <p className="text-xs text-gray-500">{article.publishedAt}</p>
+                      </div>
                     </div>
                   </div>
                 ))}
