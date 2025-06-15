@@ -201,7 +201,7 @@ export default function NFLPage() {
                     <img 
                       src={topic.image} 
                       alt={topic.title} 
-                      className="w-full h-32 object-cover"
+                      className="w-full h-50 object-cover"
                     />
                     <div className="p-6">
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">{topic.title}</h3>
