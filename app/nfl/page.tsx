@@ -210,7 +210,7 @@ export default function NFLPage() {
 
             {/* Latest News */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Latest NFL News</h2>
+              <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Latest NFL News</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {currentNews.map((article, index) => (
                   <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
