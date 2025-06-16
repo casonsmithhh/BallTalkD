@@ -184,7 +184,7 @@ export default function NFLPage() {
           <div className="lg:col-span-3">
             {/* Hot Topics */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Hot NFL Topics</h2>
+              <h2 className="text-2xl font-bold mb-6 text-gray-900">Hot Discussions</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {hotTopics.map((topic, index) => (
                   <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
