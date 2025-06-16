@@ -26,6 +26,7 @@ interface Post {
   tags: string[]
   isHot: boolean
   discussionUrl: string
+  userVote?: 'up' | 'down' | null
 }
 
 interface Reply {
@@ -42,6 +43,7 @@ interface Reply {
   downvotes: number
   createdAt: Date
   parentId?: string
+  userVote?: 'up' | 'down' | null
 }
 
 interface DiscussionForumProps {
@@ -55,12 +57,18 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
   const [selectedPost, setSelectedPost] = useState<Post | null>(null)
   const [newPostTitle, setNewPostTitle] = useState('')
   const [newPostContent, setNewPostContent] = useState('')
+  const [newReplyContent, setNewReplyContent] = useState('')
   const [showNewPostForm, setShowNewPostForm] = useState(false)
   const [sortBy, setSortBy] = useState<'hot' | 'new' | 'top'>('hot')
   const [filterCategory, setFilterCategory] = useState<string>('all')
   const [isLoading, setIsLoading] = useState(true)
+  const [currentUser, setCurrentUser] = useState<any>(null)
 
   useEffect(() => {
+    const userData = localStorage.getItem('ballTalkUser')
+    if (userData) {
+      setCurrentUser(JSON.parse(userData))
+    }
     loadDiscussions()
   }, [sport, team])
 
@@ -76,9 +84,11 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
         const processedDiscussions = discussions.map((post: any) => ({
           ...post,
           createdAt: new Date(post.createdAt),
+          userVote: null, // Initialize user vote
           replies: post.replies.map((reply: any) => ({
             ...reply,
-            createdAt: new Date(reply.createdAt)
+            createdAt: new Date(reply.createdAt),
+            userVote: null // Initialize user vote
           }))
         }))
         setPosts(processedDiscussions)
@@ -125,13 +135,15 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
             },
             upvotes: 12,
             downvotes: 1,
-            createdAt: new Date(currentDate.getTime() - 30 * 60 * 1000)
+            createdAt: new Date(currentDate.getTime() - 30 * 60 * 1000),
+            userVote: null
           }
         ],
         createdAt: new Date(currentDate.getTime() - 2 * 60 * 60 * 1000),
         tags: ['trade-deadline', 'analysis', 'roster-moves'],
         isHot: true,
-        discussionUrl: `/discussions/${sport}/${team || 'general'}/trade-deadline-analysis`
+        discussionUrl: `/discussions/${sport}/${team?.toLowerCase().replace(/\s+/g, '-') || 'general'}/trade-deadline-analysis`,
+        userVote: null
       },
       {
         id: '2',
@@ -154,47 +166,25 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
         createdAt: new Date(currentDate.getTime() - 4 * 60 * 60 * 1000),
         tags: ['game-recap', 'analysis', 'victory'],
         isHot: true,
-        discussionUrl: `/discussions/${sport}/${team || 'general'}/game-recap-incredible-performance`
-      },
-      {
-        id: '3',
-        title: `Rookie Watch: Our Young Talent is Showing Real Promise`,
-        content: `The development of our rookie class has been impressive this season. Particularly excited about how they're adapting to the professional level...`,
-        author: {
-          id: '4',
-          username: 'FutureStars',
-          avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-          reputation: 650,
-          verified: false,
-          favoriteTeam: team
-        },
-        sport,
-        team,
-        category: 'general',
-        upvotes: 34,
-        downvotes: 2,
-        replies: [],
-        createdAt: new Date(currentDate.getTime() - 6 * 60 * 60 * 1000),
-        tags: ['rookies', 'development', 'future'],
-        isHot: false,
-        discussionUrl: `/discussions/${sport}/${team || 'general'}/rookie-watch-young-talent`
+        discussionUrl: `/discussions/${sport}/${team?.toLowerCase().replace(/\s+/g, '-') || 'general'}/game-recap-incredible-performance`,
+        userVote: null
       }
     ]
   }
 
   const handleCreatePost = async () => {
-    if (!newPostTitle.trim() || !newPostContent.trim()) return
+    if (!newPostTitle.trim() || !newPostContent.trim() || !currentUser) return
 
     const newPost: Post = {
       id: Date.now().toString(),
       title: newPostTitle,
       content: newPostContent,
       author: {
-        id: 'current-user',
-        username: 'CurrentUser',
-        avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face',
-        reputation: 100,
-        verified: false,
+        id: currentUser.id,
+        username: currentUser.username,
+        avatar: currentUser.avatar,
+        reputation: currentUser.reputation || 0,
+        verified: currentUser.verified || false,
         favoriteTeam: team
       },
       sport,
@@ -206,26 +196,167 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
       createdAt: new Date(),
       tags: [],
       isHot: false,
-      discussionUrl: `/discussions/${sport}/${team || 'general'}/${newPostTitle.toLowerCase().replace(/\s+/g, '-')}`
+      discussionUrl: `/discussions/${sport}/${team?.toLowerCase().replace(/\s+/g, '-') || 'general'}/${newPostTitle.toLowerCase().replace(/\s+/g, '-')}`,
+      userVote: null
     }
 
     setPosts([newPost, ...posts])
     setNewPostTitle('')
     setNewPostContent('')
     setShowNewPostForm(false)
+
+    // Update user reputation for creating a post
+    updateUserReputation(10, 'Created a new post')
   }
 
-  const handleVote = (postId: string, voteType: 'up' | 'down') => {
-    setPosts(posts.map(post => {
-      if (post.id === postId) {
-        return {
-          ...post,
-          upvotes: voteType === 'up' ? post.upvotes + 1 : post.upvotes,
-          downvotes: voteType === 'down' ? post.downvotes + 1 : post.downvotes
+  const handleAddReply = () => {
+    if (!newReplyContent.trim() || !selectedPost || !currentUser) return
+
+    const reply: Reply = {
+      id: Date.now().toString(),
+      content: newReplyContent,
+      author: {
+        id: currentUser.id,
+        username: currentUser.username,
+        avatar: currentUser.avatar,
+        reputation: currentUser.reputation || 0,
+        verified: currentUser.verified || false
+      },
+      upvotes: 0,
+      downvotes: 0,
+      createdAt: new Date(),
+      userVote: null
+    }
+
+    const updatedPost = {
+      ...selectedPost,
+      replies: [...selectedPost.replies, reply]
+    }
+
+    setSelectedPost(updatedPost)
+    setPosts(posts.map(post => post.id === selectedPost.id ? updatedPost : post))
+    setNewReplyContent('')
+
+    // Update user reputation for commenting
+    updateUserReputation(3, 'Added a comment')
+  }
+
+  const handleVote = (type: 'post' | 'reply', id: string, voteType: 'up' | 'down') => {
+    if (!currentUser) {
+      alert('Please sign in to vote!')
+      return
+    }
+
+    if (type === 'post') {
+      setPosts(posts.map(post => {
+        if (post.id === id) {
+          const currentVote = post.userVote
+          let newUpvotes = post.upvotes
+          let newDownvotes = post.downvotes
+          let newUserVote: 'up' | 'down' | null = voteType
+
+          // Handle vote logic
+          if (currentVote === voteType) {
+            // Remove vote
+            if (voteType === 'up') newUpvotes--
+            else newDownvotes--
+            newUserVote = null
+          } else if (currentVote && currentVote !== voteType) {
+            // Change vote
+            if (currentVote === 'up') newUpvotes--
+            else newDownvotes--
+            if (voteType === 'up') newUpvotes++
+            else newDownvotes++
+          } else {
+            // New vote
+            if (voteType === 'up') newUpvotes++
+            else newDownvotes++
+          }
+
+          // Update post author's reputation if it's not the current user
+          if (post.author.id !== currentUser.id) {
+            const reputationChange = voteType === 'up' ? 5 : -2
+            if (currentVote !== voteType) {
+              updatePostAuthorReputation(post.author.id, reputationChange, `Received ${voteType}vote on post`)
+            }
+          }
+
+          return {
+            ...post,
+            upvotes: newUpvotes,
+            downvotes: newDownvotes,
+            userVote: newUserVote
+          }
         }
+        return post
+      }))
+    } else {
+      // Handle reply voting
+      if (selectedPost) {
+        const updatedPost = {
+          ...selectedPost,
+          replies: selectedPost.replies.map(reply => {
+            if (reply.id === id) {
+              const currentVote = reply.userVote
+              let newUpvotes = reply.upvotes
+              let newDownvotes = reply.downvotes
+              let newUserVote: 'up' | 'down' | null = voteType
+
+              // Handle vote logic (same as post)
+              if (currentVote === voteType) {
+                if (voteType === 'up') newUpvotes--
+                else newDownvotes--
+                newUserVote = null
+              } else if (currentVote && currentVote !== voteType) {
+                if (currentVote === 'up') newUpvotes--
+                else newDownvotes--
+                if (voteType === 'up') newUpvotes++
+                else newDownvotes++
+              } else {
+                if (voteType === 'up') newUpvotes++
+                else newDownvotes++
+              }
+
+              // Update reply author's reputation
+              if (reply.author.id !== currentUser.id) {
+                const reputationChange = voteType === 'up' ? 3 : -1
+                if (currentVote !== voteType) {
+                  updatePostAuthorReputation(reply.author.id, reputationChange, `Received ${voteType}vote on comment`)
+                }
+              }
+
+              return {
+                ...reply,
+                upvotes: newUpvotes,
+                downvotes: newDownvotes,
+                userVote: newUserVote
+              }
+            }
+            return reply
+          })
+        }
+        setSelectedPost(updatedPost)
+        setPosts(posts.map(post => post.id === selectedPost.id ? updatedPost : post))
       }
-      return post
-    }))
+    }
+  }
+
+  const updateUserReputation = (points: number, description: string) => {
+    // This would normally update the database
+    // For now, we'll update localStorage
+    const userData = localStorage.getItem('ballTalkUser')
+    if (userData) {
+      const user = JSON.parse(userData)
+      user.reputation = (user.reputation || 0) + points
+      localStorage.setItem('ballTalkUser', JSON.stringify(user))
+      setCurrentUser(user)
+    }
+  }
+
+  const updatePostAuthorReputation = (authorId: string, points: number, description: string) => {
+    // This would normally update the database for the post author
+    // For demo purposes, we'll just log it
+    console.log(`User ${authorId} reputation changed by ${points}: ${description}`)
   }
 
   const filteredPosts = posts.filter(post => {
@@ -278,15 +409,23 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
             </div>
             <div className="flex items-center space-x-2">
               <button
-                onClick={() => handleVote(selectedPost.id, 'up')}
-                className="flex items-center space-x-1 text-green-600 hover:text-green-800"
+                onClick={() => handleVote('post', selectedPost.id, 'up')}
+                className={`flex items-center space-x-1 px-3 py-1 rounded transition-colors ${
+                  selectedPost.userVote === 'up' 
+                    ? 'bg-green-100 text-green-800' 
+                    : 'text-green-600 hover:text-green-800 hover:bg-green-50'
+                }`}
               >
                 <span>↑</span>
                 <span>{selectedPost.upvotes}</span>
               </button>
               <button
-                onClick={() => handleVote(selectedPost.id, 'down')}
-                className="flex items-center space-x-1 text-red-600 hover:text-red-800"
+                onClick={() => handleVote('post', selectedPost.id, 'down')}
+                className={`flex items-center space-x-1 px-3 py-1 rounded transition-colors ${
+                  selectedPost.userVote === 'down' 
+                    ? 'bg-red-100 text-red-800' 
+                    : 'text-red-600 hover:text-red-800 hover:bg-red-50'
+                }`}
               >
                 <span>↓</span>
                 <span>{selectedPost.downvotes}</span>
@@ -297,8 +436,15 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
 
         {/* Post Content */}
         <div className="p-6">
-          <p className="text-gray-800 leading-relaxed mb-4">{selectedPost.content}</p>
-          <div className="flex flex-wrap gap-2">
+          <div className="prose max-w-none">
+            {selectedPost.content.split('\n').map((paragraph, index) => (
+              <p key={index} className="mb-4 text-gray-800 leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          
+          <div className="flex flex-wrap gap-2 mt-6">
             {selectedPost.tags.map(tag => (
               <span
                 key={tag}
@@ -310,41 +456,110 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
           </div>
         </div>
 
-        {/* Replies */}
+        {/* Replies Section */}
         <div className="border-t">
-          <div className="p-6">
-            <h3 className="text-lg font-semibold mb-4">
+          <div className="p-6 border-b">
+            <h2 className="text-xl font-bold">
               Replies ({selectedPost.replies.length})
-            </h3>
-            <div className="space-y-4">
-              {selectedPost.replies.map(reply => (
-                <div key={reply.id} className="border-l-2 border-gray-200 pl-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src={reply.author.avatar}
-                        alt={reply.author.username}
-                        className="w-5 h-5 rounded-full"
-                      />
-                      <span className="font-medium text-sm">{reply.author.username}</span>
-                      {reply.author.verified && (
-                        <span className="text-blue-600 text-xs">✓</span>
-                      )}
-                    </div>
-                    <div className="flex items-center space-x-2 text-sm">
-                      <button className="text-green-600 hover:text-green-800">
-                        ↑ {reply.upvotes}
-                      </button>
-                      <button className="text-red-600 hover:text-red-800">
-                        ↓ {reply.downvotes}
-                      </button>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 text-sm">{reply.content}</p>
-                </div>
-              ))}
-            </div>
+            </h2>
           </div>
+
+          {/* Reply Form */}
+          {currentUser && (
+            <div className="p-6 border-b bg-gray-50">
+              <div className="flex space-x-4">
+                <img
+                  src={currentUser.avatar}
+                  alt={currentUser.username}
+                  className="w-10 h-10 rounded-full"
+                />
+                <div className="flex-1">
+                  <textarea
+                    value={newReplyContent}
+                    onChange={(e) => setNewReplyContent(e.target.value)}
+                    placeholder="Add your thoughts to the discussion..."
+                    rows={3}
+                    className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <div className="mt-2 flex justify-end">
+                    <button
+                      onClick={handleAddReply}
+                      disabled={!newReplyContent.trim()}
+                      className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Reply
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Replies List */}
+          <div className="divide-y">
+            {selectedPost.replies.map((reply, index) => (
+              <motion.div
+                key={reply.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="p-6"
+              >
+                <div className="flex space-x-4">
+                  <img
+                    src={reply.author.avatar}
+                    alt={reply.author.username}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center space-x-2">
+                        <span className="font-medium">{reply.author.username}</span>
+                        {reply.author.verified && (
+                          <span className="text-blue-600 text-sm">✓</span>
+                        )}
+                        <span className="text-sm text-gray-600">
+                          {reply.author.reputation} rep
+                        </span>
+                        <span className="text-sm text-gray-600">
+                          • {reply.createdAt.toLocaleDateString()}
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => handleVote('reply', reply.id, 'up')}
+                          className={`px-2 py-1 rounded text-sm transition-colors ${
+                            reply.userVote === 'up' 
+                              ? 'bg-green-100 text-green-800' 
+                              : 'text-green-600 hover:text-green-800 hover:bg-green-50'
+                          }`}
+                        >
+                          ↑ {reply.upvotes}
+                        </button>
+                        <button
+                          onClick={() => handleVote('reply', reply.id, 'down')}
+                          className={`px-2 py-1 rounded text-sm transition-colors ${
+                            reply.userVote === 'down' 
+                              ? 'bg-red-100 text-red-800' 
+                              : 'text-red-600 hover:text-red-800 hover:bg-red-50'
+                          }`}
+                        >
+                          ↓ {reply.downvotes}
+                        </button>
+                      </div>
+                    </div>
+                    <p className="text-gray-800">{reply.content}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {selectedPost.replies.length === 0 && (
+            <div className="p-6 text-center text-gray-600">
+              No replies yet. Be the first to join the discussion!
+            </div>
+          )}
         </div>
       </div>
     )
@@ -358,13 +573,23 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
           <h2 className="text-2xl font-bold">
             💬 {team ? `${team} Discussions` : `${sport.toUpperCase()} Forum`}
           </h2>
-          <button
-            onClick={() => setShowNewPostForm(true)}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
-          >
-            + New Post
-          </button>
+          {currentUser && (
+            <button
+              onClick={() => setShowNewPostForm(true)}
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+            >
+              + New Post
+            </button>
+          )}
         </div>
+
+        {!currentUser && (
+          <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <p className="text-yellow-800 text-sm">
+              <Link href="/auth" className="font-medium underline">Sign in</Link> to create posts, comment, and vote on discussions.
+            </p>
+          </div>
+        )}
 
         {/* Filters */}
         <div className="flex space-x-4 mb-4">
@@ -422,7 +647,7 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
                   onClick={handleCreatePost}
                   className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                 >
-                  Post
+                  Post (+10 rep)
                 </button>
                 <button
                   onClick={() => setShowNewPostForm(false)}
@@ -469,6 +694,7 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
                       />
                       <span>{post.author.username}</span>
                       {post.author.verified && <span className="text-blue-600">✓</span>}
+                      <span>({post.author.reputation} rep)</span>
                     </div>
                     <span>•</span>
                     <span>{post.replies.length} replies</span>
@@ -476,31 +702,39 @@ export default function DiscussionForum({ sport, team, category }: DiscussionFor
                     <span>{post.createdAt.toLocaleDateString()}</span>
                   </div>
                   <div className="mt-3 flex space-x-2">
-                    <Link
-                      href={post.discussionUrl}
+                    <button
+                      onClick={() => setSelectedPost(post)}
                       className="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition-colors"
                     >
                       Join Discussion
-                    </Link>
-                    <button
-                      onClick={() => setSelectedPost(post)}
+                    </button>
+                    <Link
+                      href={post.discussionUrl}
                       className="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700 transition-colors"
                     >
                       View Details
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2 ml-4">
                   <div className="text-center">
                     <button
-                      onClick={() => handleVote(post.id, 'up')}
-                      className="block text-green-600 hover:text-green-800 font-semibold"
+                      onClick={() => handleVote('post', post.id, 'up')}
+                      className={`block px-2 py-1 rounded transition-colors ${
+                        post.userVote === 'up' 
+                          ? 'bg-green-100 text-green-800' 
+                          : 'text-green-600 hover:text-green-800 hover:bg-green-50'
+                      }`}
                     >
                       ↑ {post.upvotes}
                     </button>
                     <button
-                      onClick={() => handleVote(post.id, 'down')}
-                      className="block text-red-600 hover:text-red-800 font-semibold"
+                      onClick={() => handleVote('post', post.id, 'down')}
+                      className={`block px-2 py-1 rounded transition-colors ${
+                        post.userVote === 'down' 
+                          ? 'bg-red-100 text-red-800' 
+                          : 'text-red-600 hover:text-red-800 hover:bg-red-50'
+                      }`}
                     >
                       ↓ {post.downvotes}
                     </button>
