@@ -194,7 +194,7 @@ export default function NFLPage() {
           <div className="lg:col-span-3">
             {/* Hot Topics */}
             <section className="mb-12">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">🔥 Hot NFL Topics</h2>
+              <h2 className="text-2xl font-bold mb-6 text-gray-900">Hot NFL Topics</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {hotTopics.map((topic, index) => (
                   <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
@@ -220,7 +220,7 @@ export default function NFLPage() {
 
             {/* Latest News */}
             <section>
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">📰 Latest NFL News</h2>
+              <h2 className="text-2xl font-bold mb-6 text-gray-900">Latest NFL News</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {currentNews.map((article, index) => (
                   <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
@@ -248,7 +248,6 @@ export default function NFLPage() {
             <div className="sticky top-4 space-y-6">
               {/* NFL Teams */}
               <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-semibold mb-6 text-center text-gray-900">🏈 All 32 NFL Teams</h3>
                 
                 {/* AFC */}
                 <div className="mb-6">
