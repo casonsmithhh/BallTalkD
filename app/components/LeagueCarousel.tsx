@@ -36,6 +36,20 @@ export default function LeagueCarousel() {
       outline: 'border-2 border-gray-300'
     },
     {
+      name: 'NCAA Football',
+      href: '/ncaa-football',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/NCAA_logo.svg',
+      color: 'bg-white',
+      outline: 'border-2 border-gray-300'
+    },
+    {
+      name: 'NCAA Basketball',
+      href: '/ncaa-basketball',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/a/a9/March_Madness_logo.svg',
+      color: 'bg-white',
+      outline: 'border-2 border-gray-300'
+    },
+    {
       name: 'MLS',
       href: '/mls',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/7/76/MLS_crest_logo_RGB_gradient.svg',
