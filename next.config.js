@@ -15,7 +15,8 @@ const nextConfig = {
       'seeklogo.com',
       'smsumustangs.com',
       'drroto.com',
-      'images.unsplash.com'
+      'images.unsplash.com',
+      'via.placeholder.com'
     ]
   },
   eslint: {

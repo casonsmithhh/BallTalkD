@@ -10,55 +10,58 @@ export default function LeagueCarousel() {
     {
       name: 'NFL',
       href: '/nfl',
-      logo: '/images/league-logos/nfl-logo.svg',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NFL-Logo.png',
       color: 'bg-white',
-      outline: 'border-2 border-black'
+      outline: 'border-2 border-gray-300'
     },
     {
       name: 'NBA',
       href: '/nba',
-      logo: '/images/league-logos/nba-logo.svg',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NBA-Logo.png',
       color: 'bg-white',
-      outline: 'border-2 border-black'
+      outline: 'border-2 border-gray-300'
     },
     {
       name: 'MLB',
       href: '/mlb',
-      logo: '/images/league-logos/mlb-logo.svg',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/MLB-Logo.png',
       color: 'bg-white',
-      outline: 'border-2 border-black'
+      outline: 'border-2 border-gray-300'
     },
     {
       name: 'NHL',
       href: '/nhl',
-      logo: '/images/league-logos/nhl-logo.svg',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NHL-Logo.png',
       color: 'bg-white',
-      outline: 'border-2 border-black'
+      outline: 'border-2 border-gray-300'
     },
     {
       name: 'MLS',
       href: '/mls',
-      logo: 'https://a.espncdn.com/i/teamlogos/soccer/500/mls.png',
-      color: 'bg-green-600'
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/MLS-Logo.png',
+      color: 'bg-white',
+      outline: 'border-2 border-gray-300'
     },
     {
       name: 'Soccer',
       href: '/soccer',
       logo: 'https://logos-world.net/wp-content/uploads/2020/06/UEFA-Champions-League-Logo.png',
-      color: 'bg-purple-600'
+      color: 'bg-white',
+      outline: 'border-2 border-gray-300'
     },
     {
       name: 'Tennis',
       href: '/tennis',
       logo: 'https://logos-world.net/wp-content/uploads/2020/06/ATP-Logo.png',
-      color: 'bg-yellow-600'
+      color: 'bg-white',
+      outline: 'border-2 border-gray-300'
     },
     {
       name: 'F1',
       href: '/f1',
-      logo: '/images/league-logos/f1-logo.svg',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/Formula-1-Logo.png',
       color: 'bg-white',
-      outline: 'border-2 border-black'
+      outline: 'border-2 border-gray-300'
     }
   ]
 
@@ -101,13 +104,17 @@ export default function LeagueCarousel() {
                   href={league.href}
                   className="group"
                 >
-                  <div className={`${league.color} ${league.outline || ''} rounded-xl p-6 text-white text-center transition-all duration-300 hover:scale-105 hover:shadow-lg`}>
+                  <div className={`${league.color} ${league.outline || ''} rounded-xl p-6 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg`}>
                     <img
                       src={league.logo}
-                      alt={`${league.name} Logo`}
-                      className="w-12 h-12 mx-auto mb-3 object-contain"
+                      alt={`${league.name} Official Logo`}
+                      className="w-16 h-16 mx-auto mb-3 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.src = 'https://via.placeholder.com/64x64/cccccc/666666?text=' + league.name
+                      }}
                     />
-                    <h3 className={`font-bold text-lg ${league.outline ? 'text-black' : 'text-white'}`}>{league.name}</h3>
+                    <h3 className="font-bold text-lg text-gray-900">{league.name}</h3>
                   </div>
                 </Link>
               ))}

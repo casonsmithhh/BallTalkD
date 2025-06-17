@@ -112,8 +112,12 @@ export default function SportsGrid() {
                 <div className="absolute top-4 left-4">
                   <img
                     src={sport.logo}
-                    alt={`${sport.name} Logo`}
-                    className="w-12 h-12 rounded-lg bg-white p-2"
+                    alt={`${sport.name} Official Logo`}
+                    className="w-12 h-12 rounded-lg bg-white p-2 object-contain"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement
+                      target.src = 'https://via.placeholder.com/48x48/cccccc/666666?text=' + sport.name.charAt(0)
+                    }}
                   />
                 </div>
                 <div className="absolute bottom-4 left-4">
