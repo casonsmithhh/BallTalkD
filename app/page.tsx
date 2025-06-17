@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import AISearch from './components/AISearch'
-import SportsGrid from './components/SportsGrid'
+import LeagueCarousel from './components/LeagueCarousel'
+import SportsFeed from './components/SportsFeed'
 import Footer from './components/Footer'
 
 export default function Home() {
@@ -38,7 +39,8 @@ export default function Home() {
       />
       <Hero />
       <AISearch />
-      <SportsGrid />
+      <LeagueCarousel />
+      <SportsFeed />
       <Footer />
     </div>
   )
