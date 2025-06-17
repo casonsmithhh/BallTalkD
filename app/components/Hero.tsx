@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <div className="hero-bg text-white py-16 px-8 text-center relative">
-      <div className="relative z-20">
+      <div className="relative z-10">
         <h1 className="text-4xl font-bold mb-4 text-shadow-lg">
           Welcome to BallTalk
         </h1>
