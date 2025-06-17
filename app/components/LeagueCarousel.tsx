@@ -45,7 +45,7 @@ export default function LeagueCarousel() {
     {
       name: 'NCAA Basketball',
       href: '/ncaa-basketball',
-      logo: 'https://upload.wikimedia.org/wikipedia/en/a/a9/March_Madness_logo.svg',
+      logo: 'https://b.fssta.com/uploads/application/leagues/logos/NCAABasketball.vresize.350.350.medium.4.png',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
@@ -66,14 +66,14 @@ export default function LeagueCarousel() {
     {
       name: 'Champions League',
       href: '/champions-league',
-      logo: 'https://upload.wikimedia.org/wikipedia/en/b/bf/UEFA_Champions_League_logo_2.svg',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/UEFA_Champions_League.svg/1200px-UEFA_Champions_League.svg.png',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
     {
       name: 'ATP Tennis',
       href: '/tennis',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c0/ATP_Tour_logo.svg',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/3/3f/ATP_Tour_logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
