@@ -12,6 +12,7 @@ export default function LeagueCarousel() {
       href: '/nfl',
       logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png',
       color: 'bg-white'
+      outline: 
     },
     {
       name: 'NBA',
