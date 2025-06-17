@@ -13,7 +13,6 @@ interface NavigationProps {
 export default function Navigation({ currentUser, onLogin, onLogout }: NavigationProps) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showUserDropdown, setShowUserDropdown] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
   const router = useRouter()
 
   const sportsLinks = [
@@ -28,14 +27,6 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
     { name: 'NCAA Football', href: '/ncaa-fb' },
     { name: 'NCAA Basketball', href: '/ncaa-bb' },
   ]
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
-      setSearchQuery('')
-    }
-  }
 
   const handleProfileClick = () => {
     if (currentUser) {
@@ -52,7 +43,7 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
   }
 
   return (
-    <nav className="flex justify-between items-center bg-gray-900 px-8 py-3 text-white">
+    <nav className="flex justify-between items-center bg-black px-8 py-3 text-white">
       <div className="flex items-center space-x-6">
         <Link href="/" className="text-white hover:text-orange-400 font-bold transition-colors flex items-center">
           <i className="fas fa-home text-lg"></i>
@@ -91,22 +82,6 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
         <Link href="/feed" className="text-white hover:text-orange-400 font-bold transition-colors">
           Feed
         </Link>
-        
-        <form onSubmit={handleSearch} className="flex">
-          <input
-            type="text"
-            placeholder="Search teams, players, topics..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="px-3 py-1 rounded-l text-black w-48 focus:outline-none focus:ring-2 focus:ring-orange-500"
-          />
-          <button
-            type="submit"
-            className="bg-orange-500 hover:bg-orange-600 px-3 py-1 rounded-r transition-colors"
-          >
-            <i className="fas fa-search"></i>
-          </button>
-        </form>
         
         {currentUser ? (
           <div className="relative">
