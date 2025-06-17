@@ -10,7 +10,7 @@ export default function LeagueCarousel() {
     {
       name: 'NFL',
       href: '/nfl',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NFL-Logo.png',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png',
       color: 'bg-blue-600'
     },
     {
