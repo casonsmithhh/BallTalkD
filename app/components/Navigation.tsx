@@ -54,8 +54,8 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
   return (
     <nav className="flex justify-between items-center bg-gray-900 px-8 py-3 text-white">
       <div className="flex items-center space-x-6">
-        <Link href="/" className="text-white hover:text-orange-400 font-bold transition-colors">
-          Home
+        <Link href="/" className="text-white hover:text-orange-400 font-bold transition-colors flex items-center">
+          <i className="fas fa-home text-lg"></i>
         </Link>
         <div 
           className="relative"
@@ -63,7 +63,7 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
           onMouseLeave={() => setShowDropdown(false)}
         >
           <button className="text-white hover:text-orange-400 font-bold transition-colors flex items-center">
-            Topics <i className="fas fa-caret-down ml-1"></i>
+            League <i className="fas fa-caret-down ml-1"></i>
           </button>
           {showDropdown && (
             <div className="absolute top-full left-0 bg-white min-w-56 shadow-lg z-50 rounded-md overflow-hidden">
@@ -88,6 +88,10 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
       </div>
 
       <div className="flex items-center space-x-4">
+        <Link href="/feed" className="text-white hover:text-orange-400 font-bold transition-colors">
+          Feed
+        </Link>
+        
         <form onSubmit={handleSearch} className="flex">
           <input
             type="text"
@@ -106,22 +110,25 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
         
         {currentUser ? (
           <div className="relative">
-            <div className="flex items-center space-x-2">
-              <img
-                src={currentUser.avatar}
-                alt="User Avatar"
-                className="w-8 h-8 rounded-full"
-              />
-              <span className="text-white">{currentUser.username}</span>
-              <button
-                onClick={() => setShowUserDropdown(!showUserDropdown)}
-                className="text-white hover:text-orange-400 transition-colors"
-              >
-                <i className="fas fa-chevron-down"></i>
-              </button>
-            </div>
+            <button
+              onClick={() => setShowUserDropdown(!showUserDropdown)}
+              className="text-white hover:text-orange-400 transition-colors p-2"
+              title="Profile"
+            >
+              <i className="fas fa-user text-lg"></i>
+            </button>
             {showUserDropdown && (
               <div className="absolute right-0 top-full bg-white min-w-48 shadow-lg z-50 rounded-md overflow-hidden">
+                <div className="px-4 py-3 border-b border-gray-100">
+                  <div className="flex items-center space-x-2">
+                    <img
+                      src={currentUser.avatar}
+                      alt="User Avatar"
+                      className="w-8 h-8 rounded-full"
+                    />
+                    <span className="text-gray-800 font-medium">{currentUser.username}</span>
+                  </div>
+                </div>
                 <button
                   onClick={handleProfileClick}
                   className="block w-full px-4 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
@@ -152,7 +159,7 @@ export default function Navigation({ currentUser, onLogin, onLogout }: Navigatio
             className="text-white hover:text-orange-400 transition-colors p-2"
             title="Sign In"
           >
-            <i className="fas fa-sign-in-alt text-lg"></i>
+            <i className="fas fa-user text-lg"></i>
           </Link>
         )}
       </div>
