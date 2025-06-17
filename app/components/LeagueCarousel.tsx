@@ -10,56 +10,70 @@ export default function LeagueCarousel() {
     {
       name: 'NFL',
       href: '/nfl',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NFL-Logo.png',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/a/a2/National_Football_League_logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
     {
       name: 'NBA',
       href: '/nba',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NBA-Logo.png',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/0/03/National_Basketball_Association_logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
     {
       name: 'MLB',
       href: '/mlb',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/MLB-Logo.png',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a6/Major_League_Baseball_logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
     {
       name: 'NHL',
       href: '/nhl',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NHL-Logo.png',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/3/3a/05_NHL_Shield.svg',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
     {
       name: 'MLS',
       href: '/mls',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/MLS-Logo.png',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/7/76/MLS_crest_logo_RGB_gradient.svg',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
     {
-      name: 'Soccer',
-      href: '/soccer',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/UEFA-Champions-League-Logo.png',
+      name: 'Premier League',
+      href: '/premier-league',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
     {
-      name: 'Tennis',
+      name: 'Champions League',
+      href: '/champions-league',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/b/bf/UEFA_Champions_League_logo_2.svg',
+      color: 'bg-white',
+      outline: 'border-2 border-gray-300'
+    },
+    {
+      name: 'ATP Tennis',
       href: '/tennis',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/ATP-Logo.png',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c0/ATP_Tour_logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     },
     {
-      name: 'F1',
+      name: 'Formula 1',
       href: '/f1',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/Formula-1-Logo.png',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg',
+      color: 'bg-white',
+      outline: 'border-2 border-gray-300'
+    },
+    {
+      name: 'UFC',
+      href: '/ufc',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/9/92/UFC_Logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-gray-300'
     }
@@ -104,14 +118,14 @@ export default function LeagueCarousel() {
                   href={league.href}
                   className="group"
                 >
-                  <div className={`${league.color} ${league.outline || ''} rounded-xl p-6 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg`}>
+                  <div className={`${league.color} ${league.outline} rounded-xl p-6 text-center transition-all duration-300 hover:scale-105 hover:shadow-lg`}>
                     <img
                       src={league.logo}
                       alt={`${league.name} Official Logo`}
                       className="w-16 h-16 mx-auto mb-3 object-contain"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement
-                        target.src = 'https://via.placeholder.com/64x64/cccccc/666666?text=' + league.name
+                        target.src = 'https://via.placeholder.com/64x64/cccccc/666666?text=' + encodeURIComponent(league.name)
                       }}
                     />
                     <h3 className="font-bold text-lg text-gray-900">{league.name}</h3>
