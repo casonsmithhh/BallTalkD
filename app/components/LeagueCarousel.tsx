@@ -18,13 +18,15 @@ export default function LeagueCarousel() {
       name: 'NBA',
       href: '/nba',
       logo: 'https://logos-world.net/wp-content/uploads/2020/06/NBA-Logo.png',
-      color: 'bg-red-600'
+      color: 'bg-white',
+      outline: 'border-2 border-black'
     },
     {
       name: 'MLB',
       href: '/mlb',
       logo: 'https://logos-world.net/wp-content/uploads/2020/06/MLB-Logo.png',
-      color: 'bg-blue-800'
+      color: 'bg-white',
+      outline: 'border-2 border-black'
     },
     {
       name: 'NHL',
