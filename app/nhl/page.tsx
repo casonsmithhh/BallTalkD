@@ -153,33 +153,6 @@ export default function NHLPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Team Buttons Section */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">NHL Team Fan Hubs</h2>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {allTeams.map((team) => (
-                <Link 
-                  key={team.name}
-                  href={team.teamUrl}
-                  className="flex flex-col items-center p-3 border rounded-lg hover:shadow-md transition-shadow hover:bg-gray-50"
-                >
-                  <img 
-                    src={team.logo} 
-                    alt={`${team.city} ${team.name}`} 
-                    className="w-12 h-12 object-contain mb-2"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'https://a.espncdn.com/i/teamlogos/nhl/500/nhl.png';
-                    }}
-                  />
-                  <span className="text-sm font-medium text-center">{team.city} {team.name}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-3">
@@ -273,7 +246,123 @@ export default function NHLPage() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
+            {/* NHL Teams Sidebar */}
+            <div className="bg-white rounded-lg shadow-md p-4 mb-6 sticky top-4">
+              <h3 className="text-lg font-semibold mb-4 text-center text-gray-900">NHL Team Fan Hubs</h3>
+              
+              {/* Eastern Conference */}
+              <div className="mb-4">
+                <h4 className="text-md font-semibold mb-2 text-blue-600 border-b pb-1">Eastern Conference</h4>
+                
+                {/* Atlantic Division */}
+                <div className="mb-3">
+                  <h5 className="text-sm font-medium text-blue-500 mb-1">Atlantic Division</h5>
+                  <div className="grid grid-cols-3 gap-2">
+                    {divisions.eastern.atlantic.map((team) => (
+                      <Link 
+                        key={team.name}
+                        href={team.teamUrl}
+                        className="flex flex-col items-center p-1 hover:bg-gray-50 rounded transition-colors"
+                      >
+                        <img 
+                          src={team.logo} 
+                          alt={`${team.city} ${team.name}`} 
+                          className="w-8 h-8 object-contain mb-1"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = 'https://a.espncdn.com/i/teamlogos/nhl/500/nhl.png';
+                          }}
+                        />
+                        <span className="text-xs text-center">{team.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Metropolitan Division */}
+                <div>
+                  <h5 className="text-sm font-medium text-blue-500 mb-1">Metropolitan Division</h5>
+                  <div className="grid grid-cols-3 gap-2">
+                    {divisions.eastern.metropolitan.map((team) => (
+                      <Link 
+                        key={team.name}
+                        href={team.teamUrl}
+                        className="flex flex-col items-center p-1 hover:bg-gray-50 rounded transition-colors"
+                      >
+                        <img 
+                          src={team.logo} 
+                          alt={`${team.city} ${team.name}`} 
+                          className="w-8 h-8 object-contain mb-1"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = 'https://a.espncdn.com/i/teamlogos/nhl/500/nhl.png';
+                          }}
+                        />
+                        <span className="text-xs text-center">{team.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Western Conference */}
+              <div>
+                <h4 className="text-md font-semibold mb-2 text-red-600 border-b pb-1">Western Conference</h4>
+                
+                {/* Central Division */}
+                <div className="mb-3">
+                  <h5 className="text-sm font-medium text-red-500 mb-1">Central Division</h5>
+                  <div className="grid grid-cols-3 gap-2">
+                    {divisions.western.central.map((team) => (
+                      <Link 
+                        key={team.name}
+                        href={team.teamUrl}
+                        className="flex flex-col items-center p-1 hover:bg-gray-50 rounded transition-colors"
+                      >
+                        <img 
+                          src={team.logo} 
+                          alt={`${team.city} ${team.name}`} 
+                          className="w-8 h-8 object-contain mb-1"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = 'https://a.espncdn.com/i/teamlogos/nhl/500/nhl.png';
+                          }}
+                        />
+                        <span className="text-xs text-center">{team.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Pacific Division */}
+                <div>
+                  <h5 className="text-sm font-medium text-red-500 mb-1">Pacific Division</h5>
+                  <div className="grid grid-cols-3 gap-2">
+                    {divisions.western.pacific.map((team) => (
+                      <Link 
+                        key={team.name}
+                        href={team.teamUrl}
+                        className="flex flex-col items-center p-1 hover:bg-gray-50 rounded transition-colors"
+                      >
+                        <img 
+                          src={team.logo} 
+                          alt={`${team.city} ${team.name}`} 
+                          className="w-8 h-8 object-contain mb-1"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = 'https://a.espncdn.com/i/teamlogos/nhl/500/nhl.png';
+                          }}
+                        />
+                        <span className="text-xs text-center">{team.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Player Trends */}
+            <div className="bg-white rounded-lg shadow-md p-6 sticky top-4 mt-6">
               <h3 className="text-xl font-semibold mb-6 text-center text-gray-900">📈 Player Trends</h3>
               
               {/* Trending Up */}
