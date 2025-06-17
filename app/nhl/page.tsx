@@ -247,7 +247,7 @@ export default function NHLPage() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             {/* NHL Teams Sidebar */}
-            <div className="bg-white rounded-lg shadow-md p-4 mb-6 sticky top-4">
+            <div className="bg-white rounded-lg shadow-md p-4 mb-6 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
               <h3 className="text-lg font-semibold mb-4 text-center text-gray-900">NHL Team Fan Hubs</h3>
               
               {/* Eastern Conference */}
@@ -362,7 +362,7 @@ export default function NHLPage() {
             </div>
 
             {/* Player Trends */}
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-4 mt-6">
+            <div className="bg-white rounded-lg shadow-md p-6 sticky top-[calc(100vh-18rem)]">
               <h3 className="text-xl font-semibold mb-6 text-center text-gray-900">📈 Player Trends</h3>
               
               {/* Trending Up */}
