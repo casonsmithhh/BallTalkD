@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#e10600"/>
+  <path d="M200 200h880v320H200z" fill="white"/>
+  <text x="640" y="400" text-anchor="middle" font-family="Arial Black" font-size="200" fill="#e10600">F1</text>
+</svg>

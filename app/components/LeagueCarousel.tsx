@@ -10,34 +10,35 @@ export default function LeagueCarousel() {
     {
       name: 'NFL',
       href: '/nfl',
-      logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png',
+      logo: '/images/league-logos/nfl-logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-black'
     },
     {
       name: 'NBA',
       href: '/nba',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NBA-Logo.png',
+      logo: '/images/league-logos/nba-logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-black'
     },
     {
       name: 'MLB',
       href: '/mlb',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/MLB-Logo.png',
+      logo: '/images/league-logos/mlb-logo.svg',
       color: 'bg-white',
       outline: 'border-2 border-black'
     },
     {
       name: 'NHL',
       href: '/nhl',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/NHL-Logo.png',
-      color: 'bg-gray-800'
+      logo: '/images/league-logos/nhl-logo.svg',
+      color: 'bg-white',
+      outline: 'border-2 border-black'
     },
     {
       name: 'MLS',
       href: '/mls',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/MLS-Logo.png',
+      logo: 'https://a.espncdn.com/i/teamlogos/soccer/500/mls.png',
       color: 'bg-green-600'
     },
     {
@@ -55,8 +56,9 @@ export default function LeagueCarousel() {
     {
       name: 'F1',
       href: '/f1',
-      logo: 'https://logos-world.net/wp-content/uploads/2020/06/Formula-1-Logo.png',
-      color: 'bg-red-700'
+      logo: '/images/league-logos/f1-logo.svg',
+      color: 'bg-white',
+      outline: 'border-2 border-black'
     }
   ]
 
@@ -103,9 +105,9 @@ export default function LeagueCarousel() {
                     <img
                       src={league.logo}
                       alt={`${league.name} Logo`}
-                      className={`w-12 h-12 mx-auto mb-3 object-contain ${league.name === 'NFL' ? '' : 'filter brightness-0 invert'}`}
+                      className="w-12 h-12 mx-auto mb-3 object-contain"
                     />
-                    <h3 className={`font-bold text-lg ${league.name === 'NFL' ? 'text-black' : 'text-white'}`}>{league.name}</h3>
+                    <h3 className={`font-bold text-lg ${league.outline ? 'text-black' : 'text-white'}`}>{league.name}</h3>
                   </div>
                 </Link>
               ))}

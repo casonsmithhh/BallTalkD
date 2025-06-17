@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <path d="M200 20L380 120v160L200 380L20 280V120z" fill="#013369"/>
+  <rect x="50" y="50" width="300" height="300" rx="20" fill="white"/>
+  <g fill="white">
+    <circle cx="100" cy="100" r="8"/>
+    <circle cx="150" cy="100" r="8"/>
+    <circle cx="250" cy="100" r="8"/>
+    <circle cx="300" cy="100" r="8"/>
+    <circle cx="100" cy="300" r="8"/>
+    <circle cx="150" cy="300" r="8"/>
+    <circle cx="250" cy="300" r="8"/>
+    <circle cx="300" cy="300" r="8"/>
+  </g>
+  <ellipse cx="200" cy="150" rx="40" ry="20" fill="white"/>
+  <text x="200" y="250" text-anchor="middle" font-family="Arial Black" font-size="80" fill="#d50a0a">NFL</text>
+</svg>

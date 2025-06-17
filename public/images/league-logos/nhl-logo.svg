@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <path d="M200 20L380 120v160L200 380L20 280V120z" fill="#000"/>
+  <path d="M200 40L360 130v140L200 360L40 270V130z" fill="white"/>
+  <path d="M200 60L340 140v120L200 340L60 260V140z" fill="#000"/>
+  <text x="200" y="220" text-anchor="middle" font-family="Arial Black" font-size="60" fill="white">NHL</text>
+</svg>
