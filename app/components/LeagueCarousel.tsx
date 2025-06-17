@@ -11,8 +11,8 @@ export default function LeagueCarousel() {
       name: 'NFL',
       href: '/nfl',
       logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png',
-      color: 'bg-white'
-      outline: 
+      color: 'bg-white',
+      outline: 'border-2 border-black'
     },
     {
       name: 'NBA',
@@ -97,13 +97,13 @@ export default function LeagueCarousel() {
                   href={league.href}
                   className="group"
                 >
-                  <div className={`${league.color} rounded-xl p-6 text-white text-center transition-all duration-300 hover:scale-105 hover:shadow-lg`}>
+                  <div className={`${league.color} ${league.outline || ''} rounded-xl p-6 text-white text-center transition-all duration-300 hover:scale-105 hover:shadow-lg`}>
                     <img
                       src={league.logo}
                       alt={`${league.name} Logo`}
-                      className="w-12 h-12 mx-auto mb-3 object-contain filter brightness-0 invert"
+                      className={`w-12 h-12 mx-auto mb-3 object-contain ${league.name === 'NFL' ? '' : 'filter brightness-0 invert'}`}
                     />
-                    <h3 className="font-bold text-lg">{league.name}</h3>
+                    <h3 className={`font-bold text-lg ${league.name === 'NFL' ? 'text-black' : 'text-white'}`}>{league.name}</h3>
                   </div>
                 </Link>
               ))}
